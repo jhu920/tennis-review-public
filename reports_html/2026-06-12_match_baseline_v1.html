@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tennis Video Analysis Report: 2026-06-12_match_baseline_v1</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f3;
+      --paper: #fffefa;
+      --ink: #17201c;
+      --muted: #65716a;
+      --line: #d9ded6;
+      --accent: #0f6b5d;
+      --accent-2: #7c3f1d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.68 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    main { max-width: 920px; margin: 0 auto; padding: 32px 22px 72px; }
+    nav { margin-bottom: 24px; }
+    a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    h1 { margin: 0 0 24px; font-size: 30px; line-height: 1.2; letter-spacing: 0; }
+    h2 { margin: 34px 0 12px; font-size: 22px; letter-spacing: 0; }
+    h3 { margin: 24px 0 10px; font-size: 18px; letter-spacing: 0; }
+    p { max-width: 74ch; margin: 10px 0; }
+    ul, ol { max-width: 74ch; padding-left: 22px; }
+    li + li { margin-top: 6px; }
+    code { background: #eef1ed; border-radius: 5px; padding: 2px 5px; font-size: 0.92em; }
+    .table-wrap { max-width: 100%; overflow-x: auto; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 14px; }
+    th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #eef3ef; }
+    @media (max-width: 720px) {
+      main { padding: 18px 12px 52px; }
+      article { padding: 20px 16px; }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav><a href="/Users/junhaohu/Movies/Tennis/library/index.html">返回视频复盘首页</a></nav>
+    <article><h1>Tennis Video Analysis Report: 2026-06-12_match_baseline_v1</h1><h2>快速结论</h2><p>这次 V1 基线分析覆盖 3 个比赛视频。自动运动量扫描找出 24 个候选片段，已全部人工审核：10 个可用于击球分析，13 个可用于移动/恢复分析，14 个不适合用于击球分析。正式技术结论主要依赖两个底线后方中间机位视频，因为它们更能看清站位、移动路线、早侧身和击球后恢复。</p><p>当前最优先的问题不是单一的“脚步慢”，而是一个连锁问题：准备启动偏晚，导致第一步和侧身滞后；到球前小碎步不足，导致击球空间被挤压；击球后恢复不完整，下一拍又从被动位置开始。你自己观察到的“懒、没有主动垫步、没有提前侧身”是成立的，但在视频里更准确的表述是：脚步、侧身和恢复没有形成稳定的连续节奏。</p><h2>输入视频</h2><ul><li><code>/Users/junhaohu/Movies/Tennis/library/raw/2026-06-12_match/Flow_VID_20260612_213545_02_016.mov</code></li><li>机位：球网位置，正面拍摄我</li><li>主要用途：准备姿势高度、正面身体姿态、低球身体高度、是否有启动意识</li><li>限制：不可靠判断完整站位、回位距离和球路深度</li><li><code>/Users/junhaohu/Movies/Tennis/library/raw/2026-06-12_match/Flow_VID_20260612_215839_02_018.MOV</code></li><li>机位：底线后方中间</li><li>主要用途：站位、移动路线、早侧身、击球后恢复、连续球衔接</li><li><code>/Users/junhaohu/Movies/Tennis/library/raw/2026-06-12_match/Flow_VID_20260612_222423_02_020.MOV</code></li><li>机位：底线后方中间</li><li>主要用途：站位、移动路线、早侧身、击球后恢复、连续球衔接</li></ul><h2>本次证据</h2><ul><li>自动候选：24 个</li><li>已人工审核：24 个</li><li>可用于击球分析：10 个</li><li>可用于移动/恢复分析：13 个</li><li>MediaPipe 姿态抽取：480 帧候选帧中 466 帧识别到人体，正式姿态指标只汇总已审核有效击球片段中的 139 帧</li><li>关键审核文件：<code>/Users/junhaohu/Movies/Tennis/library/analyses/2026-06-12_match_baseline_v1/annotations/candidate_annotations.json</code></li><li>审核索引：<code>/Users/junhaohu/Movies/Tennis/library/analyses/2026-06-12_match_baseline_v1/annotations/review_index.md</code></li><li>姿态指标报告：<code>/Users/junhaohu/Movies/Tennis/library/analyses/2026-06-12_match_baseline_v1/pose/metrics/reviewed_pose_report.md</code></li></ul><p>标签统计里最突出的模式：</p><ul><li><code>recovery_incomplete</code>: 9 次</li><li><code>first_step_delay</code>: 7 次</li><li><code>adjustment_steps_missing</code>: 4 次</li><li><code>rushed_contact</code>: 4 次</li><li><code>off_balance</code>: 2 次</li><li><code>low_ball</code>: 2 次</li></ul><p>这些标签不是自动模型直接判断出来的教练结论，而是人工审核画面后写入的结构化证据。MediaPipe 当前只提供身体关键点和代理指标，不能单独替代网球技术判断。</p><h2>主要问题</h2><h3>1. 启动和准备偏晚</h3><p>表现：</p><ul><li>多个底线后方片段里，身体经常在来球已经进入自己半场后才明显启动。</li><li>第一启动步不够果断，常见先站直观察、再迈步追球。</li><li>有时间的球可以做出基本侧身，但来球稍快、稍低或稍宽时，侧身和引拍容易被压缩。</li></ul><p>证据片段：</p><ul><li><code>flow_vid_20260612_215839_02_018/01_00-01-07</code></li><li><code>flow_vid_20260612_215839_02_018/04_00-11-30</code></li><li><code>flow_vid_20260612_215839_02_018/06_00-15-43</code></li><li><code>flow_vid_20260612_222423_02_020/03_00-13-39</code></li></ul><p>训练含义：</p><p>你不只是要“跑快一点”，而是要把节奏提前到对手触球前后：先垫步、先判断、先转髋肩，之后才是跑。否则跑得再快，也容易到球后没有挥拍空间。</p><h3>2. 击球前小碎步和找距离不足</h3><p>表现：</p><ul><li>到球附近后，脚下调整不够细，容易一步跨到球旁边，然后身体临时补偿。</li><li>低球和宽球时，容易用上半身弯、伸手去够球，而不是先用脚把身体送到更合适的位置。</li><li>部分击球看起来不是完整挥拍被打出来，而是被来球位置挤出来。</li></ul><p>证据片段：</p><ul><li><code>flow_vid_20260612_213545_02_016/02_00-02-16</code></li><li><code>flow_vid_20260612_215839_02_018/04_00-11-30</code></li><li><code>flow_vid_20260612_222423_02_020/03_00-13-39</code></li></ul><p>训练含义：</p><p>这会直接影响正手拉球质量。你原本会做的挥拍动作，在空间不足时会被迫变成短、急、靠手的动作。下一阶段不应只练挥拍，还要把“最后 2 到 3 个调整步”作为击球动作的一部分来练。</p><h3>3. 击球后恢复不完整</h3><p>表现：</p><ul><li>击球后经常看球、停住或顺着动作走掉，没有立刻完成第一步恢复。</li><li>下一拍开始前，身体常常还没有回到合理防守位或 ready posture。</li><li>这会让下一拍看起来脚步更慢，因为你不是从中性位置启动，而是从上一拍残留位置启动。</li></ul><p>证据片段：</p><ul><li><code>flow_vid_20260612_215839_02_018/01_00-01-07</code></li><li><code>flow_vid_20260612_215839_02_018/02_00-02-09</code></li><li><code>flow_vid_20260612_215839_02_018/06_00-15-43</code></li><li><code>flow_vid_20260612_222423_02_020/03_00-13-39</code></li></ul><p>训练含义：</p><p>业余比赛里，稳定性往往来自“打完这一拍还能准备下一拍”。你现在的训练重点应该把击球结束点延后到恢复第一步，而不是随挥结束就算完成。</p><h3>4. 发球后的下一拍衔接需要单独训练</h3><p>表现：</p><ul><li>发球动作本身在本次样本里不是最主要问题，但发球后进入下一拍的节奏还不稳定。</li><li>有些片段可以看到发完后身体和注意力没有立刻进入下一拍准备。</li></ul><p>证据片段：</p><ul><li><code>flow_vid_20260612_215839_02_018/05_00-13-13</code></li><li><code>flow_vid_20260612_222423_02_020/02_00-05-35</code></li><li><code>flow_vid_20260612_222423_02_020/05_00-16-56</code></li></ul><p>训练含义：</p><p>发球练习不要只看发球是否进区，要加一个固定规则：发完必须落地、恢复、完成一次 split step，再接一拍正手或反手。</p><h2>做得较好的地方</h2><ul><li>底线后方片段里，有时间的球能做出基本的 unit turn，不是完全不会侧身。</li><li>你对低球和宽球会主动去追，问题更像是启动和最后调整不够早，而不是完全不移动。</li><li>正面机位显示你能把重心降下来处理部分低球，只是这个能力没有稳定迁移到连续回合中。</li><li>两个底线后方机位对后续分析很有价值，拍摄方向是对的。</li></ul><h2>姿态指标解读</h2><p>本次已审核击球片段姿态汇总：</p><ul><li>有效击球候选：10 个</li><li>有效帧：139 帧</li><li>平均髋部高度代理值 <code>hip_center_y_ratio</code>: 0.550</li><li>平均膝角代理值 <code>knee_angle_degrees</code>: 152.751</li><li>平均肩髋分离代理值 <code>shoulder_hip_separation_degrees</code>: 19.301</li></ul><p>解读限制：</p><ul><li>单机位视频会造成深度误差，尤其底线后方机位对肩髋分离的估计不稳定。</li><li>当前数值更适合做“同一人、同一机位、长期趋势对比”，不适合直接和职业球员标准数值比较。</li><li>这次更可靠的结论来自人工审核的视频语义，姿态指标只作为辅助证据。</li></ul><h2>下一阶段训练重点</h2><h3>重点 1：垫步加第一启动步</h3><p>目标：把启动提前，不等球过网后才动。</p><p>训练方式：</p><ul><li>对手喂球或抛球时，你必须在对方触球瞬间完成轻垫步。</li><li>落地后第一步必须朝来球方向，不允许先站直看球。</li><li>每组 10 球，目标不是打快，而是每球都出现“垫步，第一步，侧身”的顺序。</li></ul><p>追踪指标：</p><ul><li>是否在对手触球时有 split step</li><li>第一启动步是否没有停顿</li><li>到球前是否还有 2 到 3 个小调整步</li></ul><h3>重点 2：早侧身加找距离</h3><p>目标：让挥拍空间先被脚步创造出来。</p><p>训练方式：</p><ul><li>正手和反手各做半场定点多球。</li><li>口令是“转，找，打”：先转肩髋，再用小碎步找距离，最后击球。</li><li>每次低球和宽球都要求身体先到位，不能只靠手伸出去够。</li></ul><p>追踪指标：</p><ul><li>引拍是否在球落地前完成主要准备</li><li>触球点是否被身体挤住</li><li>是否出现 rushed_contact 或 jammed_contact</li></ul><h3>重点 3：击球后恢复</h3><p>目标：每次击球后都用第一恢复步结束动作。</p><p>训练方式：</p><ul><li>多球或对拉时，每打一拍必须喊出“回”并做第一恢复步。</li><li>练习时不要追求制胜分，先追求打完后回到合理防守位。</li><li>可以用底线后方中间机位继续拍摄，最容易看出恢复是否完整。</li></ul><p>追踪指标：</p><ul><li>击球后是否看球停住</li><li>是否能在下一拍前回到 ready posture</li><li>recovery_incomplete 标签是否减少</li></ul><h3>重点 4：发球加一拍</h3><p>目标：发球后不掉线，马上进入下一拍。</p><p>训练方式：</p><ul><li>每次发球后必须做一次 split step。</li><li>教练或球友回一颗中等速度球，你只练稳定打深，不追求抢攻。</li><li>每组 8 到 12 个发球加一拍。</li></ul><p>追踪指标：</p><ul><li>发球落地后是否能快速恢复</li><li>第一拍是否因为站位慢而被挤</li><li>发球后下一拍是否能打到安全深区</li></ul><h2>进度评分</h2><p>评分范围 1 到 5，1 表示当前明显拖累比赛，5 表示在业余比赛中稳定可靠。</p><div class="table-wrap"><table><thead><tr><th>日期</th><th>视频</th><th>垫步时机</th><th>第一启动步</th><th>早侧身</th><th>找距离</th><th>击球后恢复</th><th>发球+1</th><th>接发</th><th>中场球</th><th>战术决策</th><th>体能保持</th><th>备注</th></tr></thead><tbody><tr><td>2026-06-12</td><td>3 个比赛视频</td><td>2</td><td>2</td><td>2.5</td><td>2</td><td>2</td><td>2.5</td><td>待评估</td><td>待评估</td><td>2.5</td><td>3</td><td>先解决准备、找距离、恢复的连续性</td></tr></tbody></table></div><h2>后续拍摄建议</h2><ul><li>最推荐：底线后方中间。它最适合分析站位、侧身、移动路线、击球后恢复和连续球。</li><li>辅助机位：球网正面。它适合看 ready posture、重心高度、正面稳定性，但不适合作为完整击球结构的主证据。</li><li>可选增强：侧后方 45 度。它更适合看触球点、挥拍空间和身体转动。</li><li>后续每次上传视频时，最好在 <code>session_metadata.json</code> 里记录机位；如果临时没有写，我也会先按画面判断，但准确性会低一些。</li></ul><h2>工具状态</h2><ul><li>ffmpeg/ffprobe：已用于视频信息、帧抽取和运动量扫描</li><li>ImageMagick/Pillow：已用于候选片段总览图</li><li>MediaPipe Pose Landmarker：已安装并完成人体关键点提取</li><li>本地 HTML 索引：<code>/Users/junhaohu/Movies/Tennis/library/index.html</code></li><li>专业知识库：<code>/Users/junhaohu/Movies/Tennis/library/wiki/</code></li><li>参考来源清单：<code>/Users/junhaohu/Movies/Tennis/library/wiki/sources.md</code></li></ul><h2>下一版工具路线</h2><p>V1 已经能完成：视频入库、运动量扫描、候选片段抽帧、人工审核、姿态关键点、姿态指标、报告和 HTML 索引。</p><p>V2 应优先做两件事：</p><ol><li>把人工审核标签和正式报告的统计自动化，减少每次手工整理。</li><li>增加球员/球/场地追踪评估，但只作为辅助，不让模型直接下教练结论。</li></ol><p>YOLO 或网球专用模型的意义是先识别“人在哪里、球在哪里、场地线在哪里”，再支持站位、跑动路线、回位距离、击球位置和球路选择分析。它不是替代网球教练判断，而是让证据更完整。</p></article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公开网球复盘</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f3;
+      --paper: #fffefa;
+      --surface: #ffffff;
+      --ink: #17201c;
+      --muted: #65716a;
+      --line: #d9ded6;
+      --accent: #0f6b5d;
+      --warm: #7c3f1d;
+      --soft: #f8faf6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.65 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 64px; }
+    header { margin-bottom: 28px; }
+    h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.15; letter-spacing: 0; }
+    h2 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: 0; }
+    h3 { margin: 24px 0 12px; font-size: 17px; letter-spacing: 0; color: var(--warm); }
+    h4 { margin: 0 0 6px; font-size: 15px; letter-spacing: 0; }
+    a { color: var(--accent); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    .lede { max-width: 78ch; margin: 0; color: var(--muted); font-size: 16px; }
+    .kicker { margin: 0 0 8px; color: var(--accent); font-size: 13px; font-weight: 700; }
+    .muted { color: var(--muted); }
+    .session-stack { display: grid; gap: 28px; }
+    .session-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      min-width: 0;
+    }
+    .card-head > div, h2, .kicker, figcaption { min-width: 0; overflow-wrap: anywhere; }
+    .card-head { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      border-radius: 7px;
+      padding: 8px 12px;
+      background: var(--accent);
+      color: #ffffff;
+      white-space: nowrap;
+    }
+    .summary, .summary p, .summary ul, .coach-grid > div, .issue-row > div, .training-row, li {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .summary p, .summary ul { max-width: 80ch; }
+    .coach-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; }
+    .issue-row, .training-row {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 12px;
+    }
+    .issue-meta span {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 4px 9px;
+      background: #fbf0e7;
+      color: var(--warm);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .evidence-block > span, .training-block > span { display: block; margin-top: 10px; color: var(--muted); font-weight: 700; }
+    .evidence-card { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    img, video { display: block; width: 100%; background: #111827; }
+    img { height: auto; }
+    video { aspect-ratio: 16 / 9; }
+    figcaption { padding: 10px 12px; color: var(--muted); font-size: 13px; }
+    .table-wrap { max-width: 100%; overflow-x: auto; }
+    table { border-collapse: collapse; min-width: 620px; font-size: 13px; }
+    th, td { border: 1px solid var(--line); padding: 8px; text-align: left; vertical-align: top; }
+    @media (max-width: 780px) {
+      main { padding: 24px 14px 52px; }
+      .card-head { display: block; }
+      .button { margin-top: 14px; }
+      .coach-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>公开网球复盘</h1>
+      <p class="lede">每次素材按“复盘摘要、关键问题、训练建议、证据素材”整理，证据素材包含关键帧、姿态 overlay 和压缩视频片段。原始视频、内部 JSON、模型文件和未筛选素材不会上传。</p>
+    </header>
+    <div class="session-stack">
+            <section class="session-card">
+              <div class="card-head">
+                <div>
+                  <p class="kicker">2026-06-12_serve_baseline_v1</p>
+                  <h2>发球视频分析报告：2026-06-12_serve_baseline_v1</h2>
+                </div>
+                <a class="button" href="reports_html/2026-06-12_serve_baseline_v1.html">查看完整报告</a>
+              </div>
+              <div class="summary"><p>这组视频是发球练习，共 3 个视频，自动筛出 11 个候选片段；人工复核后，8 个片段可用于发球动作分析，3 个片段主要是捡球、走动或发球间准备，已排除。 当前最值得优先改的不是单一的“挥拍动作”，而是发球链条的衔接：</p><ol><li>抛球和身体前移的关系还不够稳定，几次发球看起来身体在追球，导致击球后向前掉出去。</li><li>膝髋加载偏浅，蹬转像是“把身体带出去”，但没有形成足够安静、连续的向上发力。</li><li>击球后落地和平衡恢复不够快，发完后常需要多一步重新找身体位置。</li></ol><p>从业余比赛角度，第一阶段目标应该是“可重复的一发动作”和“发完立刻能准备下一拍”，不急着追求更大力量。</p></div>
+              <div class="coach-grid">
+                <div>
+                  <h3>关键问题</h3>
+                  
+            <article class="issue-row">
+              <div class="issue-meta"><span>发球衔接</span></div>
+              <div>
+                <h4>1. 抛球和身体前移关系不稳定</h4>
+                <div class="evidence-block"><span>说明</span><p>多个有效片段中，球被抛到身体前方后，你的身体会明显向前追过去。这个动作本身不是错误，发球需要向前进入场内；问题是前移更像“追球”，而不是从稳定加载后自然释放。</p></div><div class="evidence-block"><span>表现</span><ul><li>抛球后身体重心较快往前掉。</li><li>击球后左脚落地能接住身体，但上半身继续前冲。</li><li>有些发球结束后需要额外调整脚步才能站稳。</li></ul></div><div class="evidence-block"><span>影响</span><ul><li>发球稳定性容易受抛球小偏差影响。</li><li>发完后准备下一拍慢，发球 +1 的质量会受影响。</li><li>为了追到球，手臂可能提前发力，身体链条没有完全传递到球拍。</li></ul></div><div class="evidence-block"><span>训练重点</span><ul><li>先练“抛球落点固定”，不要急着加力。</li><li>抛球后保持头和胸口更安静，让身体向上再向前，而不是一开始就向前扑。</li></ul></div>
+              </div>
+            </article>
+            
+            <article class="issue-row">
+              <div class="issue-meta"><span>发球衔接</span></div>
+              <div>
+                <h4>2. 膝髋加载偏浅，向上蹬伸不够清楚</h4>
+                <div class="evidence-block"><span>说明</span><p>姿态指标显示，人工有效帧的平均膝角多在约 150-160 度区间。这个数值不能直接等同于发球质量，但结合图像观察，可以作为一个线索：你在 trophy 到击球前的下肢加载不深，更多像上半身和手臂在完成动作。</p></div><div class="evidence-block"><span>表现</span><ul><li>击球前身体有弯曲，但膝髋压缩不明显。</li><li>蹬地更像顺势跨出去，而不是从地面向上释放。</li><li>随挥后身体前倒较明显，说明向上发力和前向发力比例还可以更好。</li></ul></div><div class="evidence-block"><span>影响</span><ul><li>发球力量上限受限。</li><li>动作节奏容易变成“抛球后赶快挥”，而不是“抛球、加载、释放”。</li><li>疲劳时更容易只用手臂，稳定性下降。</li></ul></div><div class="evidence-block"><span>训练重点</span><ul><li>用 60%-70% 力量做节奏发球，先把“屈膝加载-向上伸展-再进入场内”练清楚。</li><li>每次发完要求自己能在 1 秒内重新站稳，而不是继续往前散掉。</li></ul></div>
+              </div>
+            </article>
+            
+            <article class="issue-row">
+              <div class="issue-meta"><span>发球衔接</span></div>
+              <div>
+                <h4>3. 击球后恢复偏慢，发球 +1 准备不足</h4>
+                <div class="evidence-block"><span>说明</span><p>本次视频是发球练习，不一定包含真实回合，但仍能看到发完后的恢复习惯。很多发球结束后，你的身体要先处理落地和平衡，再进入下一拍准备。</p></div><div class="evidence-block"><span>表现</span><ul><li>落地后重心还在向前或向侧前方移动。</li><li>拍子和身体没有立刻回到可防守/可进攻的准备状态。</li><li>发球结束后有几次需要走动重置身体。</li></ul></div><div class="evidence-block"><span>影响</span><ul><li>比赛里如果对手回球质量一般，你可能也会因为准备慢错过发球 +1 主动权。</li><li>如果对手接发压回来，你的第一启动会被落地后的身体惯性拖慢。</li></ul></div><div class="evidence-block"><span>训练重点</span><ul><li>每次发球后加一个固定动作：落地、分腿小垫步、拍头回到身前。</li><li>不以球速为目标，而以“发完能马上打下一拍”为目标。</li></ul></div>
+              </div>
+            </article>
+            
+                </div>
+                <div>
+                  <h3>训练建议</h3>
+                  
+            <article class="training-row">
+              <h4>第 1 阶段：抛球稳定</h4>
+              <div class="training-block"><span>说明</span><p>每次 5-8 分钟。</p></div><div class="training-block"><span>要求</span><ul><li>不挥拍，只抛球。</li><li>球落在身体前方一小步、右肩前上方的稳定区域。</li><li>抛完后身体不追球，头和胸口保持安静。</li></ul></div><div class="training-block"><span>合格标准</span><ul><li>连续 10 次里至少 7 次落点接近。</li></ul></div>
+            </article>
+            
+            <article class="training-row">
+              <h4>第 2 阶段：70% 节奏发球</h4>
+              <div class="training-block"><span>说明</span><p>每次 20-30 球。</p></div><div class="training-block"><span>要求</span><ul><li>只用 70% 力量。</li><li>trophy 后先向上伸展，再进入场内。</li><li>不追求大力，追求抛球、加载、击球节奏一致。</li></ul></div><div class="training-block"><span>合格标准</span><ul><li>连续 10 球里至少 6 球动作节奏相似。</li><li>发完后身体能稳定落地。</li></ul></div>
+            </article>
+            
+            <article class="training-row">
+              <h4>第 3 阶段：发球 +1 恢复</h4>
+              <div class="training-block"><span>说明</span><p>每次 15-20 球。</p></div><div class="training-block"><span>要求</span><ul><li>发球后立刻做一次小垫步。</li><li>拍子回到身前。</li><li>身体面向来球方向，准备下一拍。</li></ul></div><div class="training-block"><span>合格标准</span><ul><li>发完后 1 秒内能重新进入准备姿势。</li></ul></div>
+            </article>
+            
+                </div>
+              </div>
+              <h3>证据素材</h3>
+              <article class="evidence-card"><p>两次发球动作可见；只取抛球、击球和落地恢复帧，排除前后走动。</p><div class="media-grid">
+            <figure>
+              <img src="assets/2026-06-12_serve_baseline_v1/images/flow_vid_20260612_211012_02_006__01_00-00-02.jpg" alt="flow_vid_20260612_211012_02_006/01_00-00-02 候选帧">
+              <figcaption>候选帧：flow_vid_20260612_211012_02_006/01_00-00-02</figcaption>
+            </figure>
+            
+            <figure>
+              <img src="assets/2026-06-12_serve_baseline_v1/overlays/flow_vid_20260612_211012_02_006__01_00-00-02_frame_017.jpg" alt="flow_vid_20260612_211012_02_006/01_00-00-02 姿态 overlay">
+              <figcaption>姿态 overlay：flow_vid_20260612_211012_02_006/01_00-00-02</figcaption>
+            </figure>
+            
+            <figure>
+              <video controls preload="metadata" playsinline src="assets/2026-06-12_serve_baseline_v1/clips/flow_vid_20260612_211012_02_006__01_00-00-02.mp4"></video>
+              <figcaption>视频片段：01_00-00-02，约 12 秒</figcaption>
+            </figure>
+            </div></article><article class="evidence-card"><p>一组完整发球动作可见；后半段主要是捡球和准备，排除。</p><div class="media-grid">
+            <figure>
+              <img src="assets/2026-06-12_serve_baseline_v1/images/flow_vid_20260612_211012_02_006__02_00-00-32.jpg" alt="flow_vid_20260612_211012_02_006/02_00-00-32 候选帧">
+              <figcaption>候选帧：flow_vid_20260612_211012_02_006/02_00-00-32</figcaption>
+            </figure>
+            
+            <figure>
+              <img src="assets/2026-06-12_serve_baseline_v1/overlays/flow_vid_20260612_211012_02_006__02_00-00-32_frame_017.jpg" alt="flow_vid_20260612_211012_02_006/02_00-00-32 姿态 overlay">
+              <figcaption>姿态 overlay：flow_vid_20260612_211012_02_006/02_00-00-32</figcaption>
+            </figure>
+            
+            <figure>
+              <video controls preload="metadata" playsinline src="assets/2026-06-12_serve_baseline_v1/clips/flow_vid_20260612_211012_02_006__02_00-00-32.mp4"></video>
+              <figcaption>视频片段：02_00-00-32，约 12 秒</figcaption>
+            </figure>
+            </div></article><article class="evidence-card"><p>两次发球动作可见；可观察抛球、击球点、身体前移和落地恢复。</p><div class="media-grid">
+            <figure>
+              <img src="assets/2026-06-12_serve_baseline_v1/images/flow_vid_20260612_211232_02_008__01_00-00-02.jpg" alt="flow_vid_20260612_211232_02_008/01_00-00-02 候选帧">
+              <figcaption>候选帧：flow_vid_20260612_211232_02_008/01_00-00-02</figcaption>
+            </figure>
+            
+            <figure>
+              <img src="assets/2026-06-12_serve_baseline_v1/overlays/flow_vid_20260612_211232_02_008__01_00-00-02_frame_017.jpg" alt="flow_vid_20260612_211232_02_008/01_00-00-02 姿态 overlay">
+              <figcaption>姿态 overlay：flow_vid_20260612_211232_02_008/01_00-00-02</figcaption>
+            </figure>
+            
+            <figure>
+              <video controls preload="metadata" playsinline src="assets/2026-06-12_serve_baseline_v1/clips/flow_vid_20260612_211232_02_008__01_00-00-02.mp4"></video>
+              <figcaption>视频片段：01_00-00-02，约 12 秒</figcaption>
+            </figure>
+            </div></article>
+            </section>
+            
+            <section class="session-card">
+              <div class="card-head">
+                <div>
+                  <p class="kicker">2026-06-12_match_baseline_v1</p>
+                  <h2>Tennis Video Analysis Report: 2026-06-12_match_baseline_v1</h2>
+                </div>
+                <a class="button" href="reports_html/2026-06-12_match_baseline_v1.html">查看完整报告</a>
+              </div>
+              <div class="summary"><p>这次 V1 基线分析覆盖 3 个比赛视频。自动运动量扫描找出 24 个候选片段，已全部人工审核：10 个可用于击球分析，13 个可用于移动/恢复分析，14 个不适合用于击球分析。正式技术结论主要依赖两个底线后方中间机位视频，因为它们更能看清站位、移动路线、早侧身和击球后恢复。 当前最优先的问题不是单一的“脚步慢”，而是一个连锁问题：准备启动偏晚，导致第一步和侧身滞后；到球前小碎步不足，导致击球空间被挤压；击球后恢复不完整，下一拍又从被动位置开始。你自己观察到的“懒、没有主动垫步、没有提前侧身”是成立的，但在视频里更准确的表述是：脚步、侧身和恢复没有形成稳定的连续节奏。</p></div>
+              <div class="coach-grid">
+                <div>
+                  <h3>关键问题</h3>
+                  
+            <article class="issue-row">
+              <div class="issue-meta"><span>脚步衔接</span></div>
+              <div>
+                <h4>1. 启动和准备偏晚</h4>
+                <div class="evidence-block"><span>表现</span><ul><li>多个底线后方片段里，身体经常在来球已经进入自己半场后才明显启动。</li><li>第一启动步不够果断，常见先站直观察、再迈步追球。</li><li>有时间的球可以做出基本侧身，但来球稍快、稍低或稍宽时，侧身和引拍容易被压缩。</li></ul></div><div class="evidence-block"><span>证据片段</span><ul><li><code>flow_vid_20260612_215839_02_018/01_00-01-07</code></li><li><code>flow_vid_20260612_215839_02_018/04_00-11-30</code></li><li><code>flow_vid_20260612_215839_02_018/06_00-15-43</code></li><li><code>flow_vid_20260612_222423_02_020/03_00-13-39</code></li></ul></div><div class="evidence-block"><span>训练含义</span><p>你不只是要“跑快一点”，而是要把节奏提前到对手触球前后：先垫步、先判断、先转髋肩，之后才是跑。否则跑得再快，也容易到球后没有挥拍空间。</p></div>
+              </div>
+            </article>
+            
+            <article class="issue-row">
+              <div class="issue-meta"><span>脚步衔接</span></div>
+              <div>
+                <h4>2. 击球前小碎步和找距离不足</h4>
+                <div class="evidence-block"><span>表现</span><ul><li>到球附近后，脚下调整不够细，容易一步跨到球旁边，然后身体临时补偿。</li><li>低球和宽球时，容易用上半身弯、伸手去够球，而不是先用脚把身体送到更合适的位置。</li><li>部分击球看起来不是完整挥拍被打出来，而是被来球位置挤出来。</li></ul></div><div class="evidence-block"><span>证据片段</span><ul><li><code>flow_vid_20260612_213545_02_016/02_00-02-16</code></li><li><code>flow_vid_20260612_215839_02_018/04_00-11-30</code></li><li><code>flow_vid_20260612_222423_02_020/03_00-13-39</code></li></ul></div><div class="evidence-block"><span>训练含义</span><p>这会直接影响正手拉球质量。你原本会做的挥拍动作，在空间不足时会被迫变成短、急、靠手的动作。下一阶段不应只练挥拍，还要把“最后 2 到 3 个调整步”作为击球动作的一部分来练。</p></div>
+              </div>
+            </article>
+            
+            <article class="issue-row">
+              <div class="issue-meta"><span>脚步衔接</span></div>
+              <div>
+                <h4>3. 击球后恢复不完整</h4>
+                <div class="evidence-block"><span>表现</span><ul><li>击球后经常看球、停住或顺着动作走掉，没有立刻完成第一步恢复。</li><li>下一拍开始前，身体常常还没有回到合理防守位或 ready posture。</li><li>这会让下一拍看起来脚步更慢，因为你不是从中性位置启动，而是从上一拍残留位置启动。</li></ul></div><div class="evidence-block"><span>证据片段</span><ul><li><code>flow_vid_20260612_215839_02_018/01_00-01-07</code></li><li><code>flow_vid_20260612_215839_02_018/02_00-02-09</code></li><li><code>flow_vid_20260612_215839_02_018/06_00-15-43</code></li><li><code>flow_vid_20260612_222423_02_020/03_00-13-39</code></li></ul></div><div class="evidence-block"><span>训练含义</span><p>业余比赛里，稳定性往往来自“打完这一拍还能准备下一拍”。你现在的训练重点应该把击球结束点延后到恢复第一步，而不是随挥结束就算完成。</p></div>
+              </div>
+            </article>
+            
+            <article class="issue-row">
+              <div class="issue-meta"><span>发球衔接</span></div>
+              <div>
+                <h4>4. 发球后的下一拍衔接需要单独训练</h4>
+                <div class="evidence-block"><span>表现</span><ul><li>发球动作本身在本次样本里不是最主要问题，但发球后进入下一拍的节奏还不稳定。</li><li>有些片段可以看到发完后身体和注意力没有立刻进入下一拍准备。</li></ul></div><div class="evidence-block"><span>证据片段</span><ul><li><code>flow_vid_20260612_215839_02_018/05_00-13-13</code></li><li><code>flow_vid_20260612_222423_02_020/02_00-05-35</code></li><li><code>flow_vid_20260612_222423_02_020/05_00-16-56</code></li></ul></div><div class="evidence-block"><span>训练含义</span><p>发球练习不要只看发球是否进区，要加一个固定规则：发完必须落地、恢复、完成一次 split step，再接一拍正手或反手。</p></div>
+              </div>
+            </article>
+            
+                </div>
+                <div>
+                  <h3>训练建议</h3>
+                  
+            <article class="training-row">
+              <h4>重点 1：垫步加第一启动步</h4>
+              <div class="training-block"><span>说明</span><p>目标：把启动提前，不等球过网后才动。</p></div><div class="training-block"><span>训练方式</span><ul><li>对手喂球或抛球时，你必须在对方触球瞬间完成轻垫步。</li><li>落地后第一步必须朝来球方向，不允许先站直看球。</li><li>每组 10 球，目标不是打快，而是每球都出现“垫步，第一步，侧身”的顺序。</li></ul></div><div class="training-block"><span>追踪指标</span><ul><li>是否在对手触球时有 split step</li><li>第一启动步是否没有停顿</li><li>到球前是否还有 2 到 3 个小调整步</li></ul></div>
+            </article>
+            
+            <article class="training-row">
+              <h4>重点 2：早侧身加找距离</h4>
+              <div class="training-block"><span>说明</span><p>目标：让挥拍空间先被脚步创造出来。</p></div><div class="training-block"><span>训练方式</span><ul><li>正手和反手各做半场定点多球。</li><li>口令是“转，找，打”：先转肩髋，再用小碎步找距离，最后击球。</li><li>每次低球和宽球都要求身体先到位，不能只靠手伸出去够。</li></ul></div><div class="training-block"><span>追踪指标</span><ul><li>引拍是否在球落地前完成主要准备</li><li>触球点是否被身体挤住</li><li>是否出现 rushed_contact 或 jammed_contact</li></ul></div>
+            </article>
+            
+            <article class="training-row">
+              <h4>重点 3：击球后恢复</h4>
+              <div class="training-block"><span>说明</span><p>目标：每次击球后都用第一恢复步结束动作。</p></div><div class="training-block"><span>训练方式</span><ul><li>多球或对拉时，每打一拍必须喊出“回”并做第一恢复步。</li><li>练习时不要追求制胜分，先追求打完后回到合理防守位。</li><li>可以用底线后方中间机位继续拍摄，最容易看出恢复是否完整。</li></ul></div><div class="training-block"><span>追踪指标</span><ul><li>击球后是否看球停住</li><li>是否能在下一拍前回到 ready posture</li><li>recovery_incomplete 标签是否减少</li></ul></div>
+            </article>
+            
+            <article class="training-row">
+              <h4>重点 4：发球加一拍</h4>
+              <div class="training-block"><span>说明</span><p>目标：发球后不掉线，马上进入下一拍。</p></div><div class="training-block"><span>训练方式</span><ul><li>每次发球后必须做一次 split step。</li><li>教练或球友回一颗中等速度球，你只练稳定打深，不追求抢攻。</li><li>每组 8 到 12 个发球加一拍。</li></ul></div><div class="training-block"><span>追踪指标</span><ul><li>发球落地后是否能快速恢复</li><li>第一拍是否因为站位慢而被挤</li><li>发球后下一拍是否能打到安全深区</li></ul></div>
+            </article>
+            
+                </div>
+              </div>
+              <h3>证据素材</h3>
+              <article class="evidence-card"><p>Court-facing low-ball action is visible; preparation and spacing look rushed, with limited adjustment steps and incomplete recovery before the clip drifts out of point context.</p><div class="media-grid">
+            <figure>
+              <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_213545_02_016__02_00-02-16.jpg" alt="flow_vid_20260612_213545_02_016/02_00-02-16 候选帧">
+              <figcaption>候选帧：flow_vid_20260612_213545_02_016/02_00-02-16</figcaption>
+            </figure>
+            
+            <figure>
+              <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_213545_02_016__02_00-02-16_frame_011.jpg" alt="flow_vid_20260612_213545_02_016/02_00-02-16 姿态 overlay">
+              <figcaption>姿态 overlay：flow_vid_20260612_213545_02_016/02_00-02-16</figcaption>
+            </figure>
+            
+            <figure>
+              <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_213545_02_016__02_00-02-16.mp4"></video>
+              <figcaption>视频片段：02_00-02-16，约 12 秒</figcaption>
+            </figure>
+            </div></article><article class="evidence-card"><p>Baseline rear view shows rally movement and groundstroke preparation; recovery and spacing appear variable.</p><div class="media-grid">
+            <figure>
+              <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_215839_02_018__01_00-01-07.jpg" alt="flow_vid_20260612_215839_02_018/01_00-01-07 候选帧">
+              <figcaption>候选帧：flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
+            </figure>
+            
+            <figure>
+              <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__01_00-01-07_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/01_00-01-07 姿态 overlay">
+              <figcaption>姿态 overlay：flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
+            </figure>
+            
+            <figure>
+              <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_215839_02_018__01_00-01-07.mp4"></video>
+              <figcaption>视频片段：01_00-01-07，约 12 秒</figcaption>
+            </figure>
+            </div></article><article class="evidence-card"><p>Baseline rally sequence with visible strokes; preparation improves when there is time but recovery remains incomplete.</p><div class="media-grid">
+            <figure>
+              <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_215839_02_018__02_00-02-09.jpg" alt="flow_vid_20260612_215839_02_018/02_00-02-09 候选帧">
+              <figcaption>候选帧：flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
+            </figure>
+            
+            <figure>
+              <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__02_00-02-09_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/02_00-02-09 姿态 overlay">
+              <figcaption>姿态 overlay：flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
+            </figure>
+            
+            <figure>
+              <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_215839_02_018__02_00-02-09.mp4"></video>
+              <figcaption>视频片段：02_00-02-09，约 12 秒</figcaption>
+            </figure>
+            </div></article>
+            </section>
+            </div>
+  </main>
+</body>
+</html>
