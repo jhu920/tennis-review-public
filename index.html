@@ -7,114 +7,245 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f5f6f3;
-      --paper: #fffefa;
-      --surface: #ffffff;
-      --ink: #17201c;
-      --muted: #65716a;
-      --line: #d9ded6;
-      --accent: #0f6b5d;
-      --warm: #7c3f1d;
-      --soft: #f8faf6;
+      --bg: oklch(96.5% 0.012 139);
+      --paper: oklch(99% 0.006 100);
+      --surface: oklch(98.2% 0.008 130);
+      --ink: oklch(22% 0.025 150);
+      --muted: oklch(48% 0.022 150);
+      --line: oklch(86% 0.015 135);
+      --accent: oklch(42% 0.095 165);
+      --accent-soft: oklch(92% 0.04 165);
+      --warm: oklch(42% 0.08 55);
+      --warm-soft: oklch(94% 0.035 68);
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 24px;
+      --space-2xl: 32px;
+      --space-3xl: 48px;
+      --space-4xl: 64px;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background: var(--bg);
       color: var(--ink);
-      font: 15px/1.65 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font: 16px/1.72 ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-kerning: normal;
     }
-    main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 64px; }
-    header { margin-bottom: 28px; }
-    h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.15; letter-spacing: 0; }
-    h2 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: 0; }
-    h3 { margin: 24px 0 12px; font-size: 17px; letter-spacing: 0; color: var(--warm); }
-    h4 { margin: 0 0 6px; font-size: 15px; letter-spacing: 0; }
+    main { max-width: 1180px; margin: 0 auto; padding: var(--space-3xl) 20px var(--space-4xl); }
+    header { margin-bottom: var(--space-3xl); }
+    h1 { margin: 0; max-width: 12ch; font-size: 3rem; line-height: 1.05; letter-spacing: 0; }
+    h2 { margin: 0; max-width: 26ch; font-size: 1.6rem; line-height: 1.22; letter-spacing: 0; }
+    h3 { margin: 0; font-size: 1.1rem; letter-spacing: 0; }
+    h4 { margin: 0 0 var(--space-sm); font-size: 1rem; line-height: 1.35; letter-spacing: 0; }
+    p { margin: 0; }
     a { color: var(--accent); text-decoration: none; font-weight: 700; }
     a:hover { text-decoration: underline; }
-    .lede { max-width: 78ch; margin: 0; color: var(--muted); font-size: 16px; }
-    .kicker { margin: 0 0 8px; color: var(--accent); font-size: 13px; font-weight: 700; }
+    ul, ol { margin: var(--space-sm) 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: var(--space-xs); }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: var(--space-3xl);
+      align-items: end;
+    }
+    .lede { max-width: 68ch; margin-top: var(--space-lg); color: var(--muted); font-size: 1.05rem; }
+    .kicker, .section-label {
+      margin: 0 0 var(--space-sm);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
     .muted { color: var(--muted); }
-    .session-stack { display: grid; gap: 28px; }
-    .session-card {
-      background: var(--paper);
+    .overview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      align-self: stretch;
+    }
+    .overview-item {
+      display: grid;
+      gap: var(--space-xs);
+      align-content: start;
+      min-width: 0;
+      padding: var(--space-lg);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 22px;
-      min-width: 0;
+      background: color-mix(in oklch, var(--paper) 86%, var(--accent-soft));
     }
-    .card-head > div, h2, .kicker, figcaption { min-width: 0; overflow-wrap: anywhere; }
-    .card-head { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
-    .button {
+    .overview-item strong { font-size: 1.55rem; line-height: 1; }
+    .overview-item span { color: var(--muted); font-size: 0.85rem; }
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-2xl);
+    }
+    .page-nav a {
       display: inline-flex;
       align-items: center;
+      gap: var(--space-sm);
+      max-width: 100%;
       min-height: 40px;
-      border-radius: 7px;
-      padding: 8px 12px;
-      background: var(--accent);
-      color: #ffffff;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 0.92rem;
+      overflow-wrap: anywhere;
+    }
+    .page-nav span { color: var(--accent); font-variant-numeric: tabular-nums; }
+    .session-stack { display: grid; gap: var(--space-4xl); }
+    .review-section {
+      min-width: 0;
+      padding: var(--space-3xl);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .review-head {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-xl);
+      align-items: start;
+      min-width: 0;
+    }
+    .review-head > div, h2, .kicker, figcaption { min-width: 0; overflow-wrap: anywhere; }
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
       white-space: nowrap;
     }
-    .summary, .summary p, .summary ul, .coach-grid > div, .issue-row > div, .training-row, li {
+    .summary-block {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .summary, .summary p, .summary ul, .reading-grid > div, .reading-grid aside, .issue-row > div, .training-row, li {
       min-width: 0;
       overflow-wrap: anywhere;
     }
-    .summary p, .summary ul { max-width: 80ch; }
-    .coach-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; }
+    .summary p, .summary ul { max-width: 72ch; }
+    .summary p + p { margin-top: var(--space-md); }
+    .reading-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: var(--space-3xl);
+      margin-top: var(--space-3xl);
+      align-items: start;
+    }
+    .issue-column, .training-column { display: grid; gap: var(--space-lg); }
     .issue-row, .training-row {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 14px;
-      margin-top: 12px;
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--line);
     }
     .issue-meta span {
       display: inline-flex;
       border-radius: 999px;
-      padding: 4px 9px;
-      background: #fbf0e7;
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--warm-soft);
       color: var(--warm);
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 0.76rem;
+      font-weight: 800;
     }
-    .evidence-block > span, .training-block > span { display: block; margin-top: 10px; color: var(--muted); font-weight: 700; }
-    .evidence-card { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-    figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-    img, video { display: block; width: 100%; background: #111827; }
+    .evidence-block > span, .training-block > span {
+      display: block;
+      margin-top: var(--space-md);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+    .evidence-section {
+      margin-top: var(--space-3xl);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--line);
+    }
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-xl);
+      align-items: end;
+      margin-bottom: var(--space-lg);
+    }
+    .section-heading p:last-child { max-width: 48ch; color: var(--muted); font-size: 0.95rem; }
+    .evidence-card {
+      display: grid;
+      gap: var(--space-md);
+      padding: var(--space-lg) 0 var(--space-xl);
+      border-top: 1px solid var(--line);
+    }
+    .evidence-card:first-of-type { border-top: 0; }
+    .evidence-reason { max-width: 72ch; color: var(--muted); }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md); }
+    .media-item { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .media-video { grid-column: span 2; }
+    img, video { display: block; width: 100%; background: oklch(18% 0.018 150); }
     img { height: auto; }
     video { aspect-ratio: 16 / 9; }
-    figcaption { padding: 10px 12px; color: var(--muted); font-size: 13px; }
+    figcaption { display: grid; gap: 2px; padding: var(--space-md); color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+    figcaption span { color: var(--ink); font-size: 0.78rem; font-weight: 800; }
     .table-wrap { max-width: 100%; overflow-x: auto; }
-    table { border-collapse: collapse; min-width: 620px; font-size: 13px; }
-    th, td { border: 1px solid var(--line); padding: 8px; text-align: left; vertical-align: top; }
-    @media (max-width: 780px) {
-      main { padding: 24px 14px 52px; }
-      .card-head { display: block; }
-      .button { margin-top: 14px; }
-      .coach-grid { grid-template-columns: 1fr; }
+    table { border-collapse: collapse; min-width: 620px; font-size: 0.85rem; }
+    th, td { border: 1px solid var(--line); padding: var(--space-sm); text-align: left; vertical-align: top; }
+    @media (max-width: 900px) {
+      .hero, .reading-grid { grid-template-columns: 1fr; }
+      .overview { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .media-video { grid-column: auto; }
+    }
+    @media (max-width: 640px) {
+      main { padding: var(--space-2xl) 14px var(--space-3xl); }
+      h1 { max-width: none; font-size: 2.25rem; }
+      h2 { font-size: 1.35rem; }
+      .hero { gap: var(--space-xl); }
+      .overview { grid-template-columns: 1fr; }
+      .review-section { padding: var(--space-xl); }
+      .review-head, .section-heading { display: grid; gap: var(--space-md); }
+      .summary-block { padding: var(--space-lg); }
+      .reading-grid, .session-stack { gap: var(--space-2xl); }
     }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>公开网球复盘</h1>
-      <p class="lede">每次素材按“复盘摘要、关键问题、训练建议、证据素材”整理，证据素材包含关键帧、姿态 overlay 和压缩视频片段。原始视频、内部 JSON、模型文件和未筛选素材不会上传。</p>
+      <div class="hero">
+        <div>
+          <p class="kicker">Tennis review</p>
+          <h1>公开网球复盘</h1>
+          <p class="lede">每次素材按“复盘摘要、关键问题、训练建议、证据素材”整理。你可以先读训练结论，再回看关键帧、姿态 overlay 和压缩视频片段。</p>
+        </div>
+        <div class="overview" aria-label="页面概览">
+          <div class="overview-item"><strong>2</strong><span>份复盘报告</span></div>
+          <div class="overview-item"><strong>6</strong><span>组精选证据</span></div>
+          <div class="overview-item"><strong>18</strong><span>个公开素材</span></div>
+        </div>
+      </div>
+      <nav class="page-nav" aria-label="复盘目录"><a href="#2026-06-12_serve_baseline_v1"><span>01</span>发球视频分析报告：2026-06-12_serve_baseline_v1</a><a href="#2026-06-12_match_baseline_v1"><span>02</span>Tennis Video Analysis Report: 2026-06-12_match_baseline_v1</a></nav>
     </header>
     <div class="session-stack">
-            <section class="session-card">
-              <div class="card-head">
+            <section class="review-section" id="2026-06-12_serve_baseline_v1">
+              <div class="review-head">
                 <div>
-                  <p class="kicker">2026-06-12_serve_baseline_v1</p>
+                  <p class="kicker">复盘 01 / 2026-06-12_serve_baseline_v1</p>
                   <h2>发球视频分析报告：2026-06-12_serve_baseline_v1</h2>
                 </div>
-                <a class="button" href="reports_html/2026-06-12_serve_baseline_v1.html">查看完整报告</a>
+                <a class="text-link" href="reports_html/2026-06-12_serve_baseline_v1.html">查看完整报告</a>
               </div>
-              <div class="summary"><p>这组视频是发球练习，共 3 个视频，自动筛出 11 个候选片段；人工复核后，8 个片段可用于发球动作分析，3 个片段主要是捡球、走动或发球间准备，已排除。 当前最值得优先改的不是单一的“挥拍动作”，而是发球链条的衔接：</p><ol><li>抛球和身体前移的关系还不够稳定，几次发球看起来身体在追球，导致击球后向前掉出去。</li><li>膝髋加载偏浅，蹬转像是“把身体带出去”，但没有形成足够安静、连续的向上发力。</li><li>击球后落地和平衡恢复不够快，发完后常需要多一步重新找身体位置。</li></ol><p>从业余比赛角度，第一阶段目标应该是“可重复的一发动作”和“发完立刻能准备下一拍”，不急着追求更大力量。</p></div>
-              <div class="coach-grid">
-                <div>
-                  <h3>关键问题</h3>
+              <div class="summary-block">
+                <p class="section-label">复盘摘要</p>
+                <div class="summary"><p>这组视频是发球练习，共 3 个视频，自动筛出 11 个候选片段；人工复核后，8 个片段可用于发球动作分析，3 个片段主要是捡球、走动或发球间准备，已排除。 当前最值得优先改的不是单一的“挥拍动作”，而是发球链条的衔接：</p><ol><li>抛球和身体前移的关系还不够稳定，几次发球看起来身体在追球，导致击球后向前掉出去。</li><li>膝髋加载偏浅，蹬转像是“把身体带出去”，但没有形成足够安静、连续的向上发力。</li><li>击球后落地和平衡恢复不够快，发完后常需要多一步重新找身体位置。</li></ol><p>从业余比赛角度，第一阶段目标应该是“可重复的一发动作”和“发完立刻能准备下一拍”，不急着追求更大力量。</p></div>
+              </div>
+              <div class="reading-grid">
+                <div class="issue-column">
+                  <p class="section-label">关键问题</p>
                   
             <article class="issue-row">
               <div class="issue-meta"><span>发球衔接</span></div>
@@ -141,8 +272,8 @@
             </article>
             
                 </div>
-                <div>
-                  <h3>训练建议</h3>
+                <aside class="training-column">
+                  <p class="section-label">训练建议</p>
                   
             <article class="training-row">
               <h4>第 1 阶段：抛球稳定</h4>
@@ -159,69 +290,77 @@
               <div class="training-block"><span>说明</span><p>每次 15-20 球。</p></div><div class="training-block"><span>要求</span><ul><li>发球后立刻做一次小垫步。</li><li>拍子回到身前。</li><li>身体面向来球方向，准备下一拍。</li></ul></div><div class="training-block"><span>合格标准</span><ul><li>发完后 1 秒内能重新进入准备姿势。</li></ul></div>
             </article>
             
-                </div>
+                </aside>
               </div>
-              <h3>证据素材</h3>
-              <article class="evidence-card"><p>两次发球动作可见；只取抛球、击球和落地恢复帧，排除前后走动。</p><div class="media-grid">
-            <figure>
+              <div class="evidence-section">
+                <div class="section-heading">
+                  <p class="section-label">证据素材</p>
+                  <p>精选关键帧、姿态 overlay 和压缩短视频，用来回看结论背后的动作证据。</p>
+                </div>
+                <article class="evidence-card"><p class="evidence-reason">两次发球动作可见；只取抛球、击球和落地恢复帧，排除前后走动。</p><div class="media-grid">
+            <figure class="media-item">
               <img src="assets/2026-06-12_serve_baseline_v1/images/flow_vid_20260612_211012_02_006__01_00-00-02.jpg" alt="flow_vid_20260612_211012_02_006/01_00-00-02 候选帧">
-              <figcaption>候选帧：flow_vid_20260612_211012_02_006/01_00-00-02</figcaption>
+              <figcaption><span>关键帧</span>flow_vid_20260612_211012_02_006/01_00-00-02</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item">
               <img src="assets/2026-06-12_serve_baseline_v1/overlays/flow_vid_20260612_211012_02_006__01_00-00-02_frame_017.jpg" alt="flow_vid_20260612_211012_02_006/01_00-00-02 姿态 overlay">
-              <figcaption>姿态 overlay：flow_vid_20260612_211012_02_006/01_00-00-02</figcaption>
+              <figcaption><span>姿态 overlay</span>flow_vid_20260612_211012_02_006/01_00-00-02</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item media-video">
               <video controls preload="metadata" playsinline src="assets/2026-06-12_serve_baseline_v1/clips/flow_vid_20260612_211012_02_006__01_00-00-02.mp4"></video>
-              <figcaption>视频片段：01_00-00-02，约 12 秒</figcaption>
+              <figcaption><span>视频片段</span>01_00-00-02，约 12 秒</figcaption>
             </figure>
-            </div></article><article class="evidence-card"><p>一组完整发球动作可见；后半段主要是捡球和准备，排除。</p><div class="media-grid">
-            <figure>
+            </div></article><article class="evidence-card"><p class="evidence-reason">一组完整发球动作可见；后半段主要是捡球和准备，排除。</p><div class="media-grid">
+            <figure class="media-item">
               <img src="assets/2026-06-12_serve_baseline_v1/images/flow_vid_20260612_211012_02_006__02_00-00-32.jpg" alt="flow_vid_20260612_211012_02_006/02_00-00-32 候选帧">
-              <figcaption>候选帧：flow_vid_20260612_211012_02_006/02_00-00-32</figcaption>
+              <figcaption><span>关键帧</span>flow_vid_20260612_211012_02_006/02_00-00-32</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item">
               <img src="assets/2026-06-12_serve_baseline_v1/overlays/flow_vid_20260612_211012_02_006__02_00-00-32_frame_017.jpg" alt="flow_vid_20260612_211012_02_006/02_00-00-32 姿态 overlay">
-              <figcaption>姿态 overlay：flow_vid_20260612_211012_02_006/02_00-00-32</figcaption>
+              <figcaption><span>姿态 overlay</span>flow_vid_20260612_211012_02_006/02_00-00-32</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item media-video">
               <video controls preload="metadata" playsinline src="assets/2026-06-12_serve_baseline_v1/clips/flow_vid_20260612_211012_02_006__02_00-00-32.mp4"></video>
-              <figcaption>视频片段：02_00-00-32，约 12 秒</figcaption>
+              <figcaption><span>视频片段</span>02_00-00-32，约 12 秒</figcaption>
             </figure>
-            </div></article><article class="evidence-card"><p>两次发球动作可见；可观察抛球、击球点、身体前移和落地恢复。</p><div class="media-grid">
-            <figure>
+            </div></article><article class="evidence-card"><p class="evidence-reason">两次发球动作可见；可观察抛球、击球点、身体前移和落地恢复。</p><div class="media-grid">
+            <figure class="media-item">
               <img src="assets/2026-06-12_serve_baseline_v1/images/flow_vid_20260612_211232_02_008__01_00-00-02.jpg" alt="flow_vid_20260612_211232_02_008/01_00-00-02 候选帧">
-              <figcaption>候选帧：flow_vid_20260612_211232_02_008/01_00-00-02</figcaption>
+              <figcaption><span>关键帧</span>flow_vid_20260612_211232_02_008/01_00-00-02</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item">
               <img src="assets/2026-06-12_serve_baseline_v1/overlays/flow_vid_20260612_211232_02_008__01_00-00-02_frame_017.jpg" alt="flow_vid_20260612_211232_02_008/01_00-00-02 姿态 overlay">
-              <figcaption>姿态 overlay：flow_vid_20260612_211232_02_008/01_00-00-02</figcaption>
+              <figcaption><span>姿态 overlay</span>flow_vid_20260612_211232_02_008/01_00-00-02</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item media-video">
               <video controls preload="metadata" playsinline src="assets/2026-06-12_serve_baseline_v1/clips/flow_vid_20260612_211232_02_008__01_00-00-02.mp4"></video>
-              <figcaption>视频片段：01_00-00-02，约 12 秒</figcaption>
+              <figcaption><span>视频片段</span>01_00-00-02，约 12 秒</figcaption>
             </figure>
             </div></article>
+              </div>
             </section>
             
-            <section class="session-card">
-              <div class="card-head">
+            <section class="review-section" id="2026-06-12_match_baseline_v1">
+              <div class="review-head">
                 <div>
-                  <p class="kicker">2026-06-12_match_baseline_v1</p>
+                  <p class="kicker">复盘 02 / 2026-06-12_match_baseline_v1</p>
                   <h2>Tennis Video Analysis Report: 2026-06-12_match_baseline_v1</h2>
                 </div>
-                <a class="button" href="reports_html/2026-06-12_match_baseline_v1.html">查看完整报告</a>
+                <a class="text-link" href="reports_html/2026-06-12_match_baseline_v1.html">查看完整报告</a>
               </div>
-              <div class="summary"><p>这次 V1 基线分析覆盖 3 个比赛视频。自动运动量扫描找出 24 个候选片段，已全部人工审核：10 个可用于击球分析，13 个可用于移动/恢复分析，14 个不适合用于击球分析。正式技术结论主要依赖两个底线后方中间机位视频，因为它们更能看清站位、移动路线、早侧身和击球后恢复。 当前最优先的问题不是单一的“脚步慢”，而是一个连锁问题：准备启动偏晚，导致第一步和侧身滞后；到球前小碎步不足，导致击球空间被挤压；击球后恢复不完整，下一拍又从被动位置开始。你自己观察到的“懒、没有主动垫步、没有提前侧身”是成立的，但在视频里更准确的表述是：脚步、侧身和恢复没有形成稳定的连续节奏。</p></div>
-              <div class="coach-grid">
-                <div>
-                  <h3>关键问题</h3>
+              <div class="summary-block">
+                <p class="section-label">复盘摘要</p>
+                <div class="summary"><p>这次 V1 基线分析覆盖 3 个比赛视频。自动运动量扫描找出 24 个候选片段，已全部人工审核：10 个可用于击球分析，13 个可用于移动/恢复分析，14 个不适合用于击球分析。正式技术结论主要依赖两个底线后方中间机位视频，因为它们更能看清站位、移动路线、早侧身和击球后恢复。 当前最优先的问题不是单一的“脚步慢”，而是一个连锁问题：准备启动偏晚，导致第一步和侧身滞后；到球前小碎步不足，导致击球空间被挤压；击球后恢复不完整，下一拍又从被动位置开始。你自己观察到的“懒、没有主动垫步、没有提前侧身”是成立的，但在视频里更准确的表述是：脚步、侧身和恢复没有形成稳定的连续节奏。</p></div>
+              </div>
+              <div class="reading-grid">
+                <div class="issue-column">
+                  <p class="section-label">关键问题</p>
                   
             <article class="issue-row">
               <div class="issue-meta"><span>脚步衔接</span></div>
@@ -256,8 +395,8 @@
             </article>
             
                 </div>
-                <div>
-                  <h3>训练建议</h3>
+                <aside class="training-column">
+                  <p class="section-label">训练建议</p>
                   
             <article class="training-row">
               <h4>重点 1：垫步加第一启动步</h4>
@@ -279,55 +418,60 @@
               <div class="training-block"><span>说明</span><p>目标：发球后不掉线，马上进入下一拍。</p></div><div class="training-block"><span>训练方式</span><ul><li>每次发球后必须做一次 split step。</li><li>教练或球友回一颗中等速度球，你只练稳定打深，不追求抢攻。</li><li>每组 8 到 12 个发球加一拍。</li></ul></div><div class="training-block"><span>追踪指标</span><ul><li>发球落地后是否能快速恢复</li><li>第一拍是否因为站位慢而被挤</li><li>发球后下一拍是否能打到安全深区</li></ul></div>
             </article>
             
-                </div>
+                </aside>
               </div>
-              <h3>证据素材</h3>
-              <article class="evidence-card"><p>Court-facing low-ball action is visible; preparation and spacing look rushed, with limited adjustment steps and incomplete recovery before the clip drifts out of point context.</p><div class="media-grid">
-            <figure>
+              <div class="evidence-section">
+                <div class="section-heading">
+                  <p class="section-label">证据素材</p>
+                  <p>精选关键帧、姿态 overlay 和压缩短视频，用来回看结论背后的动作证据。</p>
+                </div>
+                <article class="evidence-card"><p class="evidence-reason">Court-facing low-ball action is visible; preparation and spacing look rushed, with limited adjustment steps and incomplete recovery before the clip drifts out of point context.</p><div class="media-grid">
+            <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_213545_02_016__02_00-02-16.jpg" alt="flow_vid_20260612_213545_02_016/02_00-02-16 候选帧">
-              <figcaption>候选帧：flow_vid_20260612_213545_02_016/02_00-02-16</figcaption>
+              <figcaption><span>关键帧</span>flow_vid_20260612_213545_02_016/02_00-02-16</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_213545_02_016__02_00-02-16_frame_011.jpg" alt="flow_vid_20260612_213545_02_016/02_00-02-16 姿态 overlay">
-              <figcaption>姿态 overlay：flow_vid_20260612_213545_02_016/02_00-02-16</figcaption>
+              <figcaption><span>姿态 overlay</span>flow_vid_20260612_213545_02_016/02_00-02-16</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item media-video">
               <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_213545_02_016__02_00-02-16.mp4"></video>
-              <figcaption>视频片段：02_00-02-16，约 12 秒</figcaption>
+              <figcaption><span>视频片段</span>02_00-02-16，约 12 秒</figcaption>
             </figure>
-            </div></article><article class="evidence-card"><p>Baseline rear view shows rally movement and groundstroke preparation; recovery and spacing appear variable.</p><div class="media-grid">
-            <figure>
+            </div></article><article class="evidence-card"><p class="evidence-reason">Baseline rear view shows rally movement and groundstroke preparation; recovery and spacing appear variable.</p><div class="media-grid">
+            <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_215839_02_018__01_00-01-07.jpg" alt="flow_vid_20260612_215839_02_018/01_00-01-07 候选帧">
-              <figcaption>候选帧：flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
+              <figcaption><span>关键帧</span>flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__01_00-01-07_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/01_00-01-07 姿态 overlay">
-              <figcaption>姿态 overlay：flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
+              <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item media-video">
               <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_215839_02_018__01_00-01-07.mp4"></video>
-              <figcaption>视频片段：01_00-01-07，约 12 秒</figcaption>
+              <figcaption><span>视频片段</span>01_00-01-07，约 12 秒</figcaption>
             </figure>
-            </div></article><article class="evidence-card"><p>Baseline rally sequence with visible strokes; preparation improves when there is time but recovery remains incomplete.</p><div class="media-grid">
-            <figure>
+            </div></article><article class="evidence-card"><p class="evidence-reason">Baseline rally sequence with visible strokes; preparation improves when there is time but recovery remains incomplete.</p><div class="media-grid">
+            <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_215839_02_018__02_00-02-09.jpg" alt="flow_vid_20260612_215839_02_018/02_00-02-09 候选帧">
-              <figcaption>候选帧：flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
+              <figcaption><span>关键帧</span>flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__02_00-02-09_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/02_00-02-09 姿态 overlay">
-              <figcaption>姿态 overlay：flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
+              <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
             </figure>
             
-            <figure>
+            <figure class="media-item media-video">
               <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_215839_02_018__02_00-02-09.mp4"></video>
-              <figcaption>视频片段：02_00-02-09，约 12 秒</figcaption>
+              <figcaption><span>视频片段</span>02_00-02-09，约 12 秒</figcaption>
             </figure>
             </div></article>
+              </div>
             </section>
             </div>
   </main>
