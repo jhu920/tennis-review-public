@@ -23,8 +23,8 @@
       --space-lg: 16px;
       --space-xl: 24px;
       --space-2xl: 32px;
-      --space-3xl: 48px;
-      --space-4xl: 64px;
+      --space-3xl: 40px;
+      --space-4xl: 52px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -32,13 +32,13 @@
       margin: 0;
       background: var(--bg);
       color: var(--ink);
-      font: 16px/1.72 ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font: 15px/1.62 ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       font-kerning: normal;
     }
-    main { max-width: 1180px; margin: 0 auto; padding: var(--space-3xl) 20px var(--space-4xl); }
-    header { margin-bottom: var(--space-3xl); }
-    h1 { margin: 0; max-width: 12ch; font-size: 3rem; line-height: 1.05; letter-spacing: 0; }
-    h2 { margin: 0; max-width: 26ch; font-size: 1.6rem; line-height: 1.22; letter-spacing: 0; }
+    main { max-width: 1240px; margin: 0 auto; padding: 28px 20px var(--space-4xl); }
+    header { margin-bottom: var(--space-xl); }
+    h1 { margin: 0; font-size: 2.25rem; line-height: 1.08; letter-spacing: 0; }
+    h2 { margin: 0; max-width: 30ch; font-size: 1.45rem; line-height: 1.24; letter-spacing: 0; }
     h3 { margin: 0; font-size: 1.1rem; letter-spacing: 0; }
     h4 { margin: 0 0 var(--space-sm); font-size: 1rem; line-height: 1.35; letter-spacing: 0; }
     p { margin: 0; }
@@ -48,11 +48,11 @@
     li + li { margin-top: var(--space-xs); }
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-      gap: var(--space-3xl);
-      align-items: end;
+      grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
+      gap: var(--space-2xl);
+      align-items: center;
     }
-    .lede { max-width: 68ch; margin-top: var(--space-lg); color: var(--muted); font-size: 1.05rem; }
+    .lede { max-width: 72ch; margin-top: var(--space-sm); color: var(--muted); font-size: 0.98rem; }
     .kicker, .section-label {
       margin: 0 0 var(--space-sm);
       color: var(--accent);
@@ -62,53 +62,60 @@
       text-transform: uppercase;
     }
     .muted { color: var(--muted); }
-    .overview {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-      align-self: stretch;
-    }
+    .overview { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-sm); }
     .overview-item {
       display: grid;
-      gap: var(--space-xs);
+      gap: 2px;
       align-content: start;
       min-width: 0;
-      padding: var(--space-lg);
+      padding: var(--space-md);
       border: 1px solid var(--line);
       border-radius: 8px;
       background: color-mix(in oklch, var(--paper) 86%, var(--accent-soft));
     }
-    .overview-item strong { font-size: 1.55rem; line-height: 1; }
-    .overview-item span { color: var(--muted); font-size: 0.85rem; }
+    .overview-item strong { font-size: 1.25rem; line-height: 1; }
+    .overview-item span { color: var(--muted); font-size: 0.78rem; }
     .page-nav {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-sm);
-      margin-top: var(--space-2xl);
+      margin-top: var(--space-xl);
+      padding: var(--space-xs);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: color-mix(in oklch, var(--paper) 68%, var(--surface));
     }
-    .page-nav a {
+    .review-tab {
+      appearance: none;
+      border: 0;
       display: inline-flex;
       align-items: center;
       gap: var(--space-sm);
       max-width: 100%;
-      min-height: 40px;
+      min-height: 36px;
       padding: var(--space-sm) var(--space-md);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--paper);
+      border-radius: 8px;
+      background: transparent;
       color: var(--ink);
-      font-size: 0.92rem;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-align: left;
       overflow-wrap: anywhere;
+      cursor: pointer;
     }
-    .page-nav span { color: var(--accent); font-variant-numeric: tabular-nums; }
-    .session-stack { display: grid; gap: var(--space-4xl); }
+    .review-tab:hover { background: var(--surface); }
+    .review-tab.is-active { background: var(--accent-soft); color: var(--accent); }
+    .review-tab span { color: var(--accent); font-variant-numeric: tabular-nums; }
+    .session-stack { display: grid; gap: var(--space-xl); }
     .review-section {
       min-width: 0;
-      padding: var(--space-3xl);
+      padding: var(--space-2xl);
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--paper);
     }
+    .review-section:not(.is-active) { display: none; }
     .review-head {
       display: flex;
       justify-content: space-between;
@@ -124,8 +131,8 @@
       white-space: nowrap;
     }
     .summary-block {
-      margin-top: var(--space-2xl);
-      padding: var(--space-xl);
+      margin-top: var(--space-xl);
+      padding: var(--space-lg);
       border-radius: 8px;
       background: var(--surface);
     }
@@ -136,23 +143,26 @@
     .summary p, .summary ul { max-width: 72ch; }
     .summary p + p { margin-top: var(--space-md); }
     .problem-section, .training-section {
-      margin-top: var(--space-3xl);
+      margin-top: var(--space-2xl);
     }
-    .issue-column, .training-list { display: grid; gap: var(--space-2xl); }
+    .issue-column { display: grid; gap: var(--space-xl); }
+    .training-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-lg); }
     .issue-row {
       display: grid;
-      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
-      gap: var(--space-2xl);
+      grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.15fr);
+      gap: var(--space-xl);
       align-items: start;
-      padding-top: var(--space-2xl);
+      padding-top: var(--space-xl);
       border-top: 1px solid var(--line);
     }
     .issue-row:first-child { border-top: 0; padding-top: 0; }
     .training-row {
-      padding-top: var(--space-lg);
-      border-top: 1px solid var(--line);
+      padding: var(--space-lg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
     }
-    .training-row:first-child { border-top: 0; padding-top: 0; }
+    .training-row:first-child { border-top: 1px solid var(--line); padding-top: var(--space-lg); }
     .issue-meta span {
       display: inline-flex;
       border-radius: 999px;
@@ -170,7 +180,7 @@
     .issue-copy h4 { font-size: 1.15rem; }
     .evidence-block > span, .training-block > span {
       display: block;
-      margin-top: var(--space-md);
+      margin-top: var(--space-sm);
       color: var(--muted);
       font-size: 0.85rem;
       font-weight: 800;
@@ -188,7 +198,7 @@
       justify-content: space-between;
       gap: var(--space-xl);
       align-items: end;
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-md);
     }
     .section-heading p:last-child { max-width: 48ch; color: var(--muted); font-size: 0.95rem; }
     .evidence-card {
@@ -208,6 +218,7 @@
     }
     .issue-evidence-card .media-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
     }
     .issue-evidence-card .media-video { grid-column: 1 / -1; }
     .issue-evidence-card figcaption { padding: var(--space-sm) var(--space-md); }
@@ -218,7 +229,7 @@
     img, video { display: block; width: 100%; background: oklch(18% 0.018 150); }
     img { height: auto; }
     video { aspect-ratio: 16 / 9; }
-    figcaption { display: grid; gap: 2px; padding: var(--space-md); color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+    figcaption { display: grid; gap: 2px; padding: var(--space-md); color: var(--muted); font-size: 0.78rem; line-height: 1.35; }
     figcaption span { color: var(--ink); font-size: 0.78rem; font-weight: 800; }
     .table-wrap { max-width: 100%; overflow-x: auto; }
     table { border-collapse: collapse; min-width: 620px; font-size: 0.85rem; }
@@ -231,15 +242,20 @@
       .issue-evidence-card .media-video { grid-column: 1 / -1; }
     }
     @media (max-width: 640px) {
-      main { padding: var(--space-2xl) 14px var(--space-3xl); }
-      h1 { max-width: none; font-size: 2.25rem; }
-      h2 { font-size: 1.35rem; }
-      .hero { gap: var(--space-xl); }
-      .overview { grid-template-columns: 1fr; }
-      .review-section { padding: var(--space-xl); }
+      main { padding: var(--space-lg) 12px var(--space-3xl); }
+      h1 { max-width: none; font-size: 1.85rem; }
+      h2 { font-size: 1.2rem; }
+      .hero { gap: var(--space-md); }
+      .overview { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xs); }
+      .overview-item { padding: var(--space-sm); }
+      .overview-item strong { font-size: 1.1rem; }
+      .overview-item span { font-size: 0.72rem; }
+      .page-nav { margin-top: var(--space-md); overflow-x: auto; flex-wrap: nowrap; }
+      .review-tab { flex: 0 0 min(84vw, 300px); }
+      .review-section { padding: var(--space-lg); }
       .review-head, .section-heading { display: grid; gap: var(--space-md); }
-      .summary-block { padding: var(--space-lg); }
-      .session-stack, .issue-column, .training-list { gap: var(--space-2xl); }
+      .summary-block { padding: var(--space-md); }
+      .session-stack, .issue-column, .training-list { gap: var(--space-lg); }
       .issue-evidence-card .media-grid { grid-template-columns: 1fr; }
       .issue-evidence-card .media-video { grid-column: auto; }
     }
@@ -255,15 +271,15 @@
           <p class="lede">每次素材按“复盘摘要、问题与证据、训练建议”整理。先对照视频看问题，再用训练重点安排下一次练习。</p>
         </div>
         <div class="overview" aria-label="页面概览">
-          <div class="overview-item"><strong>3</strong><span>份复盘报告</span></div>
-          <div class="overview-item"><strong>17</strong><span>组精选证据</span></div>
-          <div class="overview-item"><strong>51</strong><span>个公开素材</span></div>
+          <div class="overview-item"><strong>3</strong><span>报告</span></div>
+          <div class="overview-item"><strong>10</strong><span>证据组</span></div>
+          <div class="overview-item"><strong>30</strong><span>素材</span></div>
         </div>
       </div>
-      <nav class="page-nav" aria-label="复盘目录"><a href="#2026-06-14_match_baseline_v1"><span>01</span>2026-06-14 比赛视频分析报告</a><a href="#2026-06-12_serve_baseline_v1"><span>02</span>2026-06-12 发球视频分析报告</a><a href="#2026-06-12_match_baseline_v1"><span>03</span>2026-06-12 比赛视频分析报告</a></nav>
+      <nav class="page-nav" role="tablist" aria-label="复盘目录"><button class="review-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="2026-06-14_match_baseline_v1" id="2026-06-14_match_baseline_v1-tab" data-review-tab="2026-06-14_match_baseline_v1"><span>01</span>2026-06-14 比赛视频分析报告</button><button class="review-tab" type="button" role="tab" aria-selected="false" aria-controls="2026-06-12_serve_baseline_v1" id="2026-06-12_serve_baseline_v1-tab" data-review-tab="2026-06-12_serve_baseline_v1"><span>02</span>2026-06-12 发球视频分析报告</button><button class="review-tab" type="button" role="tab" aria-selected="false" aria-controls="2026-06-12_match_baseline_v1" id="2026-06-12_match_baseline_v1-tab" data-review-tab="2026-06-12_match_baseline_v1"><span>03</span>2026-06-12 比赛视频分析报告</button></nav>
     </header>
     <div class="session-stack">
-            <section class="review-section" id="2026-06-14_match_baseline_v1">
+            <section class="review-section is-active" id="2026-06-14_match_baseline_v1" role="tabpanel" aria-labelledby="2026-06-14_match_baseline_v1-tab" data-review-panel="2026-06-14_match_baseline_v1">
               <div class="review-head">
                 <div>
                   <p class="kicker">复盘 01 / 2026-06-14_match_baseline_v1</p>
@@ -300,21 +316,6 @@
               <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_180436_02_024__01_00-04-52_frame_021.jpg" alt="flow_vid_20260614_180436_02_024/01_00-04-52 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260614_180436_02_024/01_00-04-52</figcaption>
             </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-14_match_baseline_v1/clips/flow_vid_20260614_180436_02_024__03_00-06-18.mp4"></video>
-              <figcaption><span>视频片段</span>03_00-06-18，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/images/flow_vid_20260614_180436_02_024__03_00-06-18.jpg" alt="flow_vid_20260614_180436_02_024/03_00-06-18 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260614_180436_02_024/03_00-06-18</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_180436_02_024__03_00-06-18_frame_021.jpg" alt="flow_vid_20260614_180436_02_024/03_00-06-18 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260614_180436_02_024/03_00-06-18</figcaption>
-            </figure>
             </div></article></div>
           </div>
         
@@ -343,21 +344,6 @@
             <figure class="media-item">
               <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_181611_02_026__05_00-11-41_frame_021.jpg" alt="flow_vid_20260614_181611_02_026/05_00-11-41 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260614_181611_02_026/05_00-11-41</figcaption>
-            </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-14_match_baseline_v1/clips/flow_vid_20260614_181611_02_026__07_00-12-43.mp4"></video>
-              <figcaption><span>视频片段</span>07_00-12-43，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/images/flow_vid_20260614_181611_02_026__07_00-12-43.jpg" alt="flow_vid_20260614_181611_02_026/07_00-12-43 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260614_181611_02_026/07_00-12-43</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_181611_02_026__07_00-12-43_frame_021.jpg" alt="flow_vid_20260614_181611_02_026/07_00-12-43 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260614_181611_02_026/07_00-12-43</figcaption>
             </figure>
             </div></article></div>
           </div>
@@ -388,21 +374,6 @@
               <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_184356_02_030__04_00-08-18_frame_021.jpg" alt="flow_vid_20260614_184356_02_030/04_00-08-18 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260614_184356_02_030/04_00-08-18</figcaption>
             </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-14_match_baseline_v1/clips/flow_vid_20260614_184356_02_030__06_00-12-30.mp4"></video>
-              <figcaption><span>视频片段</span>06_00-12-30，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/images/flow_vid_20260614_184356_02_030__06_00-12-30.jpg" alt="flow_vid_20260614_184356_02_030/06_00-12-30 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260614_184356_02_030/06_00-12-30</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_184356_02_030__06_00-12-30_frame_021.jpg" alt="flow_vid_20260614_184356_02_030/06_00-12-30 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260614_184356_02_030/06_00-12-30</figcaption>
-            </figure>
             </div></article></div>
           </div>
         
@@ -432,21 +403,6 @@
               <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_180436_02_024__06_00-08-02_frame_021.jpg" alt="flow_vid_20260614_180436_02_024/06_00-08-02 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260614_180436_02_024/06_00-08-02</figcaption>
             </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-14_match_baseline_v1/clips/flow_vid_20260614_181611_02_026__06_00-12-17.mp4"></video>
-              <figcaption><span>视频片段</span>06_00-12-17，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/images/flow_vid_20260614_181611_02_026__06_00-12-17.jpg" alt="flow_vid_20260614_181611_02_026/06_00-12-17 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260614_181611_02_026/06_00-12-17</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_181611_02_026__06_00-12-17_frame_021.jpg" alt="flow_vid_20260614_181611_02_026/06_00-12-17 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260614_181611_02_026/06_00-12-17</figcaption>
-            </figure>
             </div></article></div>
           </div>
         
@@ -475,21 +431,6 @@
             <figure class="media-item">
               <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_184356_02_030__04_00-08-18_frame_021.jpg" alt="flow_vid_20260614_184356_02_030/04_00-08-18 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260614_184356_02_030/04_00-08-18</figcaption>
-            </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-14_match_baseline_v1/clips/flow_vid_20260614_184356_02_030__06_00-12-30.mp4"></video>
-              <figcaption><span>视频片段</span>06_00-12-30，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/images/flow_vid_20260614_184356_02_030__06_00-12-30.jpg" alt="flow_vid_20260614_184356_02_030/06_00-12-30 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260614_184356_02_030/06_00-12-30</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-14_match_baseline_v1/overlays/flow_vid_20260614_184356_02_030__06_00-12-30_frame_021.jpg" alt="flow_vid_20260614_184356_02_030/06_00-12-30 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260614_184356_02_030/06_00-12-30</figcaption>
             </figure>
             </div></article></div>
           </div>
@@ -536,7 +477,7 @@
               </section>
             </section>
             
-            <section class="review-section" id="2026-06-12_serve_baseline_v1">
+            <section class="review-section" id="2026-06-12_serve_baseline_v1" role="tabpanel" aria-labelledby="2026-06-12_serve_baseline_v1-tab" data-review-panel="2026-06-12_serve_baseline_v1">
               <div class="review-head">
                 <div>
                   <p class="kicker">复盘 02 / 2026-06-12_serve_baseline_v1</p>
@@ -666,7 +607,7 @@
               </section>
             </section>
             
-            <section class="review-section" id="2026-06-12_match_baseline_v1">
+            <section class="review-section" id="2026-06-12_match_baseline_v1" role="tabpanel" aria-labelledby="2026-06-12_match_baseline_v1-tab" data-review-panel="2026-06-12_match_baseline_v1">
               <div class="review-head">
                 <div>
                   <p class="kicker">复盘 03 / 2026-06-12_match_baseline_v1</p>
@@ -703,21 +644,6 @@
               <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__01_00-01-07_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/01_00-01-07 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
             </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_215839_02_018__04_00-11-30.mp4"></video>
-              <figcaption><span>视频片段</span>04_00-11-30，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_215839_02_018__04_00-11-30.jpg" alt="flow_vid_20260612_215839_02_018/04_00-11-30 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260612_215839_02_018/04_00-11-30</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__04_00-11-30_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/04_00-11-30 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/04_00-11-30</figcaption>
-            </figure>
             </div></article></div>
           </div>
         
@@ -746,21 +672,6 @@
             <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_213545_02_016__02_00-02-16_frame_011.jpg" alt="flow_vid_20260612_213545_02_016/02_00-02-16 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260612_213545_02_016/02_00-02-16</figcaption>
-            </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_215839_02_018__04_00-11-30.mp4"></video>
-              <figcaption><span>视频片段</span>04_00-11-30，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_215839_02_018__04_00-11-30.jpg" alt="flow_vid_20260612_215839_02_018/04_00-11-30 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260612_215839_02_018/04_00-11-30</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__04_00-11-30_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/04_00-11-30 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/04_00-11-30</figcaption>
             </figure>
             </div></article></div>
           </div>
@@ -791,21 +702,6 @@
               <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__01_00-01-07_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/01_00-01-07 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/01_00-01-07</figcaption>
             </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_215839_02_018__02_00-02-09.mp4"></video>
-              <figcaption><span>视频片段</span>02_00-02-09，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_215839_02_018__02_00-02-09.jpg" alt="flow_vid_20260612_215839_02_018/02_00-02-09 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__02_00-02-09_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/02_00-02-09 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/02_00-02-09</figcaption>
-            </figure>
             </div></article></div>
           </div>
         
@@ -834,21 +730,6 @@
             <figure class="media-item">
               <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_215839_02_018__05_00-13-13_frame_011.jpg" alt="flow_vid_20260612_215839_02_018/05_00-13-13 姿态 overlay">
               <figcaption><span>姿态 overlay</span>flow_vid_20260612_215839_02_018/05_00-13-13</figcaption>
-            </figure>
-            </div></article><article class="evidence-card issue-evidence-card"><div class="media-grid">
-            <figure class="media-item media-video">
-              <video controls preload="metadata" playsinline src="assets/2026-06-12_match_baseline_v1/clips/flow_vid_20260612_222423_02_020__02_00-05-35.mp4"></video>
-              <figcaption><span>视频片段</span>02_00-05-35，约 12 秒</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/images/flow_vid_20260612_222423_02_020__02_00-05-35.jpg" alt="flow_vid_20260612_222423_02_020/02_00-05-35 候选帧">
-              <figcaption><span>关键帧</span>flow_vid_20260612_222423_02_020/02_00-05-35</figcaption>
-            </figure>
-            
-            <figure class="media-item">
-              <img src="assets/2026-06-12_match_baseline_v1/overlays/flow_vid_20260612_222423_02_020__02_00-05-35_frame_011.jpg" alt="flow_vid_20260612_222423_02_020/02_00-05-35 姿态 overlay">
-              <figcaption><span>姿态 overlay</span>flow_vid_20260612_222423_02_020/02_00-05-35</figcaption>
             </figure>
             </div></article></div>
           </div>
@@ -891,5 +772,33 @@
             </section>
             </div>
   </main>
+  <script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll('[data-review-tab]'));
+      const panels = Array.from(document.querySelectorAll('[data-review-panel]'));
+      if (!tabs.length || !panels.length) return;
+
+      const activate = (id, updateHash = true) => {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.reviewTab === id;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        panels.forEach((panel) => {
+          const active = panel.dataset.reviewPanel === id;
+          panel.classList.toggle('is-active', active);
+          panel.hidden = !active;
+        });
+        if (updateHash) history.replaceState(null, '', `#${id}`);
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => activate(tab.dataset.reviewTab));
+      });
+
+      const initial = location.hash ? location.hash.slice(1) : tabs[0].dataset.reviewTab;
+      activate(tabs.some((tab) => tab.dataset.reviewTab === initial) ? initial : tabs[0].dataset.reviewTab, false);
+    })();
+  </script>
 </body>
 </html>
