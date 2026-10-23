@@ -262,6 +262,41 @@
       .issue-evidence-card .media-grid { grid-template-columns: 1fr; }
       .issue-evidence-card .media-video { grid-column: auto; }
     }
+
+.practice-sheet { margin-top: 24px; min-width: 0; }
+.practice-sheet > h3 { margin: 0 0 12px; }
+.practice-sheet details { border-top: 1px solid var(--line); padding: 14px 0; }
+.practice-sheet summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+.practice-sheet summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.practice-copy { margin-top: 12px; }
+.practice-copy p + p { margin-top: 8px; }
+.practice-copy table { width: 100%; }
+.practice-copy th:first-child { min-width: 90px; }
+.practice-record { margin-top: 16px; }
+.practice-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.practice-fields label { display: grid; align-content: start; gap: 6px; font-size: 14px; }
+.practice-fields .wide { grid-column: 1 / -1; }
+.practice-fields input, .practice-fields textarea {
+  box-sizing: border-box; width: 100%; min-width: 0; min-height: 42px;
+  border: 1px solid var(--line); border-radius: 4px; background: var(--paper);
+  color: var(--ink); padding: 8px; font: inherit;
+}
+.practice-fields textarea { resize: vertical; min-height: 84px; }
+.practice-fields :is(input, textarea):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.practice-fields input[aria-invalid="true"] { border-color: #a03235; }
+.practice-record-status { min-height: 1.7em; margin-top: 8px; color: var(--muted); font-size: 13px; }
+.practice-record-note { color: var(--muted); font-size: 13px; margin: 8px 0; }
+@media (max-width: 640px) {
+  .practice-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .practice-plan table, .practice-plan tbody, .practice-plan tr, .practice-plan td { display: block; min-width: 0; width: 100%; }
+  .practice-plan thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .practice-plan tr { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .practice-plan td { border: 0; padding: 3px 0; }
+  .practice-plan td:nth-child(1), .practice-plan td:nth-child(2) { font-weight: 700; }
+  .practice-plan td:nth-child(4)::before { content: '本组只想：'; color: var(--muted); }
+}
+@media (max-width: 380px) { .practice-fields { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body>
@@ -293,6 +328,7 @@
               <div class="summary-block">
                 <p class="section-label">复盘摘要</p>
                 <div class="summary"><p>教练让你提前架拍的方向值得继续：让转肩和右手准备接起来，为下降及向前上方挥出留时间。本次拍喂、对拉都有完整样本，但10月18日也已有准备与落拍，暂不宣称整体上旋或深度已经提高。 下次只留一个正手口令：“转肩带拍，脚下找距，连续挥出。”发球单独练抛球与挥拍节奏，不照搬正手早架拍。先提高重复性，再用过网余量和深区验证，不额外强压手、翻腕或前扑。</p></div>
+                <a href="#practice-2026-10-22_rally_review_v1">练球前查看训练单</a>
               </div>
               <section class="problem-section">
                 <div class="section-heading">
@@ -442,27 +478,22 @@
                   <p class="section-label">训练建议</p>
                   <p>先读完问题，再按下面的训练重点执行和复盘。</p>
                 </div>
-                <div class="training-list">
-            <article class="training-row">
-              <h4>重点1：转肩带拍，先把准备做成一个动作</h4>
-              <div class="training-block"><span>说明</span><p>目标：让右手进入准备与身体侧转相连接，而不是单独追求拍头举得更高。</p></div><div class="training-block"><span>方法</span><ul><li>5分钟，固定拍喂10球一组，共3组，先用六成速度；每组只想“转肩带拍”。</li><li>教练帮助核对：来球弹起前后，是否已经进入可继续下降、挥出的准备，而不是临近挥拍才补做架拍。落地只是相近常规来球的观察参照，不是所有球都必须遵守的死时间点。</li><li>提前架拍后继续小步调整，不举住僵等，也不故意停在最低拍头处。</li></ul></div><div class="training-block"><span>合格标准</span><p>先争取每组至少7球，被教练认可为准备、下降、挥出连贯且入界；达不到就降低来球难度，不急着加速。这是下一次练习目标，当前未计数。</p></div>
-            </article>
-
-            <article class="training-row">
-              <h4>重点2：从固定拍喂迁移到带一点变化的对拉</h4>
-              <div class="training-block"><span>说明</span><p>目标：把架拍和找距离一起带入对拉，避免只能打预先知道落点的球。</p></div><div class="training-block"><span>方法</span><ul><li>10分钟，每轮3球固定拍喂，再接5球慢速合作对拉。</li><li>先相近高度、同一正手区域；能连续后，只增加一种变化，例如左右各一点或一深一浅，不同时加球速和落点难度。</li><li>每球挥完回到可启动准备，不要求每次站回完全相同的点。需要恢复到哪里，取决于球路与练习任务。</li></ul></div><div class="training-block"><span>合格标准</span><p>连续5拍中，先争取至少3拍能保留准备到挥出的连接；两轮做到后再增加变化。若出现站住等球或挥拍挤在一起，退回简单来球复现。</p></div>
-            </article>
-
-            <article class="training-row">
-              <h4>重点3：用过网和深区验证上旋提示是否有效</h4>
-              <div class="training-block"><span>说明</span><p>目标：提前准备最终要换成可重复的球路，而不是只让截图看起来更标准。</p></div><div class="training-block"><span>方法</span><ul><li>5分钟，六至七成速度打大目标区。由教练设过网余量，可从高于网带约1米的练习窗口试起，再按实际球路调整。</li><li>深区定义保持为对方发球线至底线之间，只有入界才算深区命中。每20球记入界、下网、出底线和深区数，落点看不清的记未知，不硬算。</li><li>用相近喂球分两组：先正常打，再只加“转肩带拍”提示，比较结果。不以某一球的高随挥宣布旋转增加。</li></ul></div><div class="training-block"><span>合格标准</span><p>先建立真实基线，再看提示后是否能在不增加失误的前提下增加深区球。不直接套用未测量的个人水平或上次建议目标作为已达标成绩。</p></div>
-            </article>
-
-            <article class="training-row">
-              <h4>重点4：发球单独练节奏与抛球可重复性</h4>
-              <div class="training-block"><span>说明</span><p>目标：让完整动作和可用抛球重复出现，再追求速度。</p></div><div class="training-block"><span>方法</span><ul><li>5–8分钟，先做5次不击球的抛球，由教练确认适合你的可用窗口，再做两组各10次六成发球，左右发球区分开记录。</li><li>抛得明显偏离窗口就接住重来；记录“可用抛球次数”和“实际击球中的入区次数”，两种分母分开。</li><li>保持顺畅上举与向上挥出，击后回到可继续下一拍的准备；不靠刻意压腕、追加后仰或跳高来追力量。</li></ul></div><div class="training-block"><span>合格标准</span><p>先记录10次抛球里多少次可用、10次实击里多少次入区，作为本次后的首个发球基线。当前录像未做完整逐球计数，不写现有成功率。</p></div>
-            </article>
-            </div>
+                <section class="practice-sheet" id="practice-2026-10-22_rally_review_v1">
+      <h3>练球前训练单</h3>
+      <details><summary>动作差异与修改优先级</summary><div class="practice-copy"><p>结论：优先改善动作的组织与重复性，不把外形改成德约。你已经能完成转肩、架拍、球拍下降、挥出和恢复；练习目标是来球变化后仍能保留这些连接。以下依据已复核窗口，不是全场逐球统计；职业参考有慢放、机位和来球差异，不计算双方动作速度差。</p><div class="table-wrap"><table><thead><tr><th>环节</th><th>德约参考与对应证据</th><th>你的表现与修改优先级</th></tr></thead><tbody><tr><td>转肩与架拍</td><td>B约01.8–02.1秒转肩带拍、左臂展开；C约00:03–00:07看高位准备</td><td>065约08:11.3–08:11.8也能做到。第一优先：稳定转肩与持拍准备的连接；现场教练反馈是重点验证线索，不认定每球都晚。</td></tr><tr><td>球拍下降到挥出</td><td>C约00:08–00:12，下降接向前挥出</td><td>065约08:12.2–08:12.5也有下降。第二优先：在对拉中保留连续节奏，不临时补抬拍或强压手臂。</td></tr><tr><td>屈膝与身体升降</td><td>B先较高、再降低、挥出后升起</td><td>你也有这些阶段。正常变化，不要求一直蹲低；目前不足以证明屈膝不足或过早起身。</td></tr><tr><td>侧倾、站位与弯臂</td><td>德约也有侧倾、弯臂和支撑转换</td><td>本身允许有个人差异。检查是否反复挤住、伸够或妨碍恢复，而不是追求每帧挺直。单一斜后方机位不能确诊这些原因。</td></tr><tr><td>随挥与恢复</td><td>B约02.7–03.0重新组织持拍</td><td>你在065约08:13.1–08:13.3也有恢复。检查对手下一次触球时是否可启动，而非复制他的随挥终点。</td></tr></tbody></table></div><p>正常个人差异：引拍大小、拍头准备高度、站位宽度、开放或半开放站位、肘部弯曲和随挥终点。只有反复妨碍击球空间、落点或下一拍，才升级为修改对象。不能据此外推核心弱或身体不协调。</p><p>执行顺序：先练转肩带拍，再迁移到变化来球，最后用入界、下网和深区落点验证。不靠更低的拍头或更像职业球员的截图判定进步；低到高的路径帮助上旋，但还要保留向前的出球，避免只向上刷而越打越短。</p></div></details>
+      <details open><summary>下次训练：60分钟执行表</summary><div class="practice-copy practice-plan"><p>每组只留一个注意点。以下数字是练习安排，不是你的现有成绩或职业合格线；有教练时按现场情况调整休息与难度。</p><div class="table-wrap"><table><thead><tr><th>时间</th><th>练习</th><th>怎么做</th><th>本组只想</th></tr></thead><tbody><tr><td>0–8分钟</td><td>热身、短场合作击球</td><td>逐步进入底线，不急着改动作或加速。</td><td>自然进入节奏</td></tr><tr><td>8–18分钟</td><td>固定正手拍喂</td><td>3组×10球，约六成速度；组间休息并听一次反馈，不刻意压手或加大引拍。</td><td>转肩带拍</td></tr><tr><td>18–30分钟</td><td>喂球转对拉</td><td>每轮3颗固定喂球，接最多5拍慢速合作对拉，约6轮。失误重开，检查是否又临时补架拍，不硬凑拍数。</td><td>保留准备到挥出的连接</td></tr><tr><td>30–42分钟</td><td>小范围移动正手</td><td>可控范围内改变左右、深浅，3组×8球。提前准备后仍调整距离，挥完自然接恢复。</td><td>脚下找距</td></tr><tr><td>42–52分钟</td><td>深度验证</td><td>2组×10颗可正常处理的正手来球；瞄中间大区域，把对方底线内约3米设为深区，不追边线、不加力量。不能形成有效击球的来球单独注明。</td><td>向前上方连续挥</td></tr><tr><td>52–57分钟</td><td>发球独立练习</td><td>10次抛球检查可用性，再10次实际发球记录入区；明显坏抛球接住重来，不把正手早架拍直接套到发球。</td><td>可重复的节奏</td></tr><tr><td>57–60分钟</td><td>放松与记录</td><td>记录下表与教练最有效的一个口令。</td><td>留下可比较的结果</td></tr></tbody></table></div><p>现场口令：转肩带拍，脚下找距，向前上方连续挥。分组分别练，不在一次挥拍里同时检查所有细节。</p></div></details>
+      <details open><summary>本次训练记录</summary><div class="practice-copy"><p>深度验证按20球记录入界、下网、深区入界。深区入界是入界的子集；出界等其他结果不必强行归入下网。请教练另抽看连续5球，记录临近挥出才补架拍的次数。抛球与实际发球分别计10次，不能共用分母。空白代表未记录，不是0。</p><p>比较条件：尽量保持喂球速度、站位、目标区相近，固定喂球与对拉分别看，不直接把固定喂球成绩拿去和比赛比较。若感觉顺了但球明显变短或失误更多，先降低难度，不继续加速。</p><p>拍摄：同一机位各拍约2分钟固定拍喂、合作对拉；有余力加持拍手侧面1分钟。横屏、固定、正常速度，尽量1080p/60fps，包含全身、脚、完整球拍；保留失败球。文件随下一次训练视频一起提供，我们再复核动作连接与落点结果。</p></div><form class="practice-record" data-practice-record="2026-10-22_rally_review_v1" autocomplete="off">
+      <div class="practice-fields">
+        <label>练球日期<input name="date" type="date" required></label>
+        <label class="wide">本次唯一重点<input name="cue" type="text" maxlength="120" placeholder="例如：转肩带拍"></label>
+        <label>入界球数 / 20<input name="in" type="number" min="0" max="20" step="1" inputmode="numeric"></label><label>下网球数 / 20<input name="net" type="number" min="0" max="20" step="1" inputmode="numeric"></label><label>深区入界球数 / 20<input name="deep" type="number" min="0" max="20" step="1" inputmode="numeric"></label><label>临近挥出才补架拍 / 5<input name="late" type="number" min="0" max="5" step="1" inputmode="numeric"></label><label>可用抛球 / 10<input name="toss" type="number" min="0" max="10" step="1" inputmode="numeric"></label><label>实际发球入区 / 10<input name="serve" type="number" min="0" max="10" step="1" inputmode="numeric"></label>
+        <label class="wide">教练反馈、来球条件与下次调整<textarea name="notes" maxlength="3000" rows="3"></textarea></label>
+      </div>
+      <p class="practice-record-note">仅保存在当前浏览器，不上传、不跨设备同步；同一天修改会更新当天记录。清除浏览器数据会丢失记录。</p>
+      <p class="practice-record-status" role="status" aria-live="polite"></p>
+      <noscript>当前浏览器未启用脚本，填写内容不会自动保存。</noscript>
+    </form></details>
+    </section>
               </section>
             </section>
 
@@ -477,6 +508,7 @@
               <div class="summary-block">
                 <p class="section-label">复盘摘要</p>
                 <div class="summary"><p>你的体感提供了有用线索。逐帧能确认：近距离手喂的后摆更展开、下降过程更清楚；连续对拉也确实存在拍头下降和随后向高处挥动。因此不能把当前问题简单定成“右手不够低”或“完全没有上旋”。下一步更值得验证的是：在相近来球下，能否重复有空间、连续的向前上方挥拍，并得到足够的过网余量和深度。 本次优先顺序：先稳住击球距离与准备节奏，让拍头下降自然接上向前上方挥拍，再用过网高度和落点验证效果。手肘弯曲、手在腰部都不是单独的错误；也不建议为了打深而刻意把上半身扑向前。 3 个视频共约 20 分 26 秒，按纠正前对拉、教练纠正、纠正后对拉复核。页面中的 4 组证据经过单独挑选，包含带原视频时间的局部连续帧和对应短视频。以下是画面分析与训练假设，没有测量上旋转速或全场下网率。</p></div>
+
               </div>
               <section class="problem-section">
                 <div class="section-heading">
@@ -616,6 +648,7 @@
               <div class="summary-block">
                 <p class="section-label">复盘摘要</p>
                 <div class="summary"><p>这次分析覆盖 4 个今天的比赛/对拉视频，总时长约 46 分钟。手机机位基本都是底线后方中间附近，因此很适合看站位、启动、横向移动、击球后恢复和连续衔接；但不适合精确判断拍面角度、触球点前后距离和细小挥拍轨迹。 自动运动量扫描找出 32 个候选片段，人工审核后 27 个可用于技术分析，5 个因为距离太远、走动、靠近镜头或非击球状态而排除。MediaPipe 姿态指标在 27 个有效候选里汇总了 985 帧。 今天最核心的问题仍然不是单纯“脚步慢”，而是准备节奏没有稳定提前：你能跑到不少球，也能在部分片段里做出比较好的侧身和下沉，但更多时候是等来球方向已经很明确后才启动；到球附近后最后调整步不够细；击球后又容易走回去或看球停住。结果是下一拍经常从被动状态开始。 相比 2026-06-12 的比赛视频，今天可以看到一些进步：底线连续回合更多，能覆盖较宽的来球，也出现了几段更明显的 unit turn 和身体下沉。但这些能力还没有变成每一拍的固定流程。</p></div>
+
               </div>
               <section class="problem-section">
                 <div class="section-heading">
@@ -814,6 +847,7 @@
               <div class="summary-block">
                 <p class="section-label">复盘摘要</p>
                 <div class="summary"><p>这组视频是发球练习，共 3 个视频，自动筛出 11 个候选片段；人工复核后，8 个片段可用于发球动作分析，3 个片段主要是捡球、走动或发球间准备，已排除。 当前最值得优先改的不是单一的“挥拍动作”，而是发球链条的衔接：</p><ol><li>抛球和身体前移的关系还不够稳定，几次发球看起来身体在追球，导致击球后向前掉出去。</li><li>膝髋加载偏浅，蹬转像是“把身体带出去”，但没有形成足够安静、连续的向上发力。</li><li>击球后落地和平衡恢复不够快，发完后常需要多一步重新找身体位置。</li></ol><p>从业余比赛角度，第一阶段目标应该是“可重复的一发动作”和“发完立刻能准备下一拍”，不急着追求更大力量。</p></div>
+
               </div>
               <section class="problem-section">
                 <div class="section-heading">
@@ -944,6 +978,7 @@
               <div class="summary-block">
                 <p class="section-label">复盘摘要</p>
                 <div class="summary"><p>这次 V1 基线分析覆盖 3 个比赛视频。自动运动量扫描找出 24 个候选片段，已全部人工审核：10 个可用于击球分析，13 个可用于移动/恢复分析，14 个不适合用于击球分析。正式技术结论主要依赖两个底线后方中间机位视频，因为它们更能看清站位、移动路线、早侧身和击球后恢复。 当前最优先的问题不是单一的“脚步慢”，而是一个连锁问题：准备启动偏晚，导致第一步和侧身滞后；到球前小碎步不足，导致击球空间被挤压；击球后恢复不完整，下一拍又从被动位置开始。你自己观察到的“懒、没有主动垫步、没有提前侧身”是成立的，但在视频里更准确的表述是：脚步、侧身和恢复没有形成稳定的连续节奏。</p></div>
+
               </div>
               <section class="problem-section">
                 <div class="section-heading">
@@ -1126,5 +1161,86 @@
       activate(tabs.some((tab) => tab.dataset.reviewTab === initial) ? initial : tabs[0].dataset.reviewTab, false);
     })();
   </script>
+  <script>
+(() => {
+  document.querySelectorAll('[data-practice-record]').forEach(form => {
+    const date = form.elements.namedItem('date');
+    const status = form.querySelector('.practice-record-status');
+    const fields = Array.from(form.querySelectorAll('input, textarea')).filter(field => field !== date);
+    const prefix = 'tennis-practice:v1:' + form.dataset.practiceRecord + ':';
+    const now = new Date();
+    date.value = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
+    let activeDate = date.value;
+    const pending = new Map();
+    const readStored = day => {
+      const raw = localStorage.getItem(prefix + day);
+      const data = raw ? JSON.parse(raw) : {};
+      if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid record');
+      return Object.fromEntries(fields.filter(field => typeof data[field.name] === 'string').map(field => [field.name, data[field.name]]));
+    };
+    const fill = data => fields.forEach(field => { field.value = data[field.name] ?? ''; });
+    const readNumber = name => {
+      const value = form.elements.namedItem(name).value;
+      return value === '' ? null : Number(value);
+    };
+    const validate = () => {
+      fields.forEach(field => { field.setCustomValidity(''); field.removeAttribute('aria-invalid'); });
+      const inside = readNumber('in'), net = readNumber('net'), deep = readNumber('deep');
+      if (inside !== null && deep !== null && deep > inside) {
+        form.elements.namedItem('deep').setCustomValidity('深区入界球数不能大于入界球数');
+      }
+      if (inside !== null && net !== null && inside + net > 20) {
+        form.elements.namedItem('net').setCustomValidity('入界与下网合计不能超过20球');
+      }
+      const invalid = [date, ...fields].find(field => !field.validity.valid);
+      if (invalid) invalid.setAttribute('aria-invalid', 'true');
+      return invalid;
+    };
+    const load = () => {
+      if (fields.some(field => field.validity.badInput)) {
+        date.value = activeDate;
+        status.textContent = '请先完成或清空正在输入的数字；原记录尚未覆盖。';
+        return;
+      }
+      if (!date.value || !date.validity.valid) { status.textContent = '请选择有效日期。'; return; }
+      activeDate = date.value;
+      try {
+        const stored = readStored(activeDate);
+        fill({...stored, ...pending.get(activeDate)});
+        const invalid = validate();
+        status.textContent = pending.has(activeDate) ? '已恢复未保存草稿；关闭页面前请另行记录。' : invalid ? '已读取记录，请检查数字范围与计数关系。' : Object.keys(stored).length ? '已读取此设备当天记录。' : '当天尚无记录。';
+      } catch (_) {
+        fill(pending.get(activeDate) || {});
+        validate();
+        status.textContent = '无法读取本地记录；不会覆盖原记录。新填写暂留此页面，关闭前请另行记录。';
+      }
+    };
+    const save = field => {
+      if (field.validity.badInput) {
+        status.textContent = '数字尚未输入完整，原记录尚未覆盖。';
+        return;
+      }
+      pending.set(activeDate, {...pending.get(activeDate), [field.name]: field.value});
+      if (!date.value || !date.validity.valid) { status.textContent = '请选择有效日期；本次修改尚未保存。'; return; }
+      try {
+        // Merge only edited fields, so a stale report tab cannot erase another tab's entries.
+        const data = {...readStored(activeDate), ...pending.get(activeDate)};
+        fill(data);
+        const invalid = validate();
+        localStorage.setItem(prefix + date.value, JSON.stringify(data));
+        pending.delete(activeDate);
+        status.textContent = invalid ? '已保留草稿：' + invalid.validationMessage : '已保存在此设备：' + date.value;
+      } catch (_) { status.textContent = '保存失败：未覆盖原记录。新填写暂留此页面，切回日期可恢复，关闭前请另行记录。'; }
+    };
+    form.addEventListener('submit', event => event.preventDefault());
+    date.addEventListener('change', load);
+    fields.forEach(field => field.addEventListener('input', () => save(field)));
+    globalThis.addEventListener?.('storage', event => {
+      if (event.key === prefix + date.value || event.key === null) load();
+    });
+    load();
+  });
+})();
+</script>
 </body>
 </html>
